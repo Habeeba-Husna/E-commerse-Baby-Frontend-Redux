@@ -1,0 +1,256 @@
+{
+  "users": [
+    {
+      "id": "7f43",
+      "userName": "ggh",
+      "email": "habeebahusna@gmail.com",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "phone": "223456"
+    },
+    {
+      "id": "b7fb",
+      "userName": "mk",
+      "email": "habeebahusna@gmail.com",
+      "password": "12",
+      "confirmPassword": "12",
+      "phone": "12"
+    },
+    {
+      "id": "6bb7",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "223"
+    },
+    {
+      "id": "73d3",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "223"
+    },
+    {
+      "id": "b18d",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "223"
+    },
+    {
+      "id": "23c5",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "22333"
+    },
+    {
+      "id": "7234",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "22333"
+    },
+    {
+      "id": "abba",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "22333"
+    },
+    {
+      "id": "8e60",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "22333"
+    },
+    {
+      "id": "a81c",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "22333"
+    },
+    {
+      "id": "61d7",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "22333"
+    },
+    {
+      "id": "b11e",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "22333"
+    },
+    {
+      "id": "609d",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "userName": "WW",
+      "confirmPassword": "123",
+      "phone": "22333"
+    },
+    {
+      "id": "4fbd",
+      "email": "admin@gmail.com",
+      "password": "11",
+      "userName": "FF",
+      "confirmPassword": "11",
+      "phone": "2223"
+    },
+    {
+      "id": "c540",
+      "email": "admin@gmail.com",
+      "password": "11",
+      "userName": "FF",
+      "confirmPassword": "11",
+      "phone": "2223"
+    },
+    {
+      "id": "180f",
+      "email": "admin@gmail.com",
+      "password": "11",
+      "userName": "FF",
+      "confirmPassword": "11",
+      "phone": "2223"
+    },
+    {
+      "id": "76f0",
+      "email": "habeebahusna@gmail.com",
+      "password": "123",
+      "userName": "habi",
+      "confirmPassword": "123",
+      "phone": "1234567890"
+    },
+    {
+      "id": "8716",
+      "email": "habeebahusna@gmail.com",
+      "password": "1234",
+      "userName": "sss",
+      "confirmPassword": "1234",
+      "phone": "2334566677"
+    },
+    {
+      "id": "1c47",
+      "email": "habeebahusna@gmail.com",
+      "password": "1234",
+      "userName": "sss",
+      "confirmPassword": "1234",
+      "phone": "2334566677"
+    }
+  ],
+"products": [
+    {
+      "id": 1,
+      "name": "Baby Onesie",
+      "image": "https://example.com/image1.jpg",
+      "description": "Soft and comfortable onesie for newborns.",
+      "price": 10.99,
+      "category": "Clothing",
+      "inStock": true
+    },
+    {
+      "id": 2,
+      "name": "Teething Toy",
+      "image": "https://example.com/image2.jpg",
+      "description": "Safe and chewable toy for teething babies.",
+      "price": 5.99,
+      "category": "Toys",
+      "inStock": true
+    },{
+      "id": 3,
+      "name": "born kit",
+      "price": 900,
+      "quantity": 13,
+      "description": "new baby kit",
+      "category": "baby kit",
+      "url": "https://images-cdn.ubuy.co.in/634c292c296120706a53e026-zelinye-baby-care-kits-baby-grooming.jpg"
+    },
+    {
+      "name": "junior horlicks",
+      "price": 300,
+      "quantity": 99,
+      "description": 10,
+      "category": "food",
+      "url": "https://5.imimg.com/data5/UD/OK/MY-24695322/selection_114.png",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "name": "pediasure",
+      "price": 1400,
+      "quantity": 9,
+      "description": "this for the student",
+      "category": "food",
+      "url": "https://www.bigbasket.com/media/uploads/p/xxl/20005378_13-pediasure-nutritional-powder-complete-balanced-premium-chocolate.jpg"
+    },
+    {
+      "name": "max",
+      "price": 1000,
+      "quantity": 10,
+      "description": 10,
+      "category": "Dress",
+      "url": "https://images.meesho.com/images/products/400059299/8huvg_512.webp",
+      "id": 6
+    },
+    {
+      "name": "toys",
+      "price": 450,
+      "quantity": 10,
+      "description": 10,
+      "category": "toys",
+      "url": "https://media.post.rvohealth.io/wp-content/uploads/2022/04/UPDATE-1809308-The-Best-Baby-Food-Jars-Pouches-Organic-and-More-1200x628-Facebook-1200x628.jpg",
+      "id": 7
+    },
+    {
+      "id": 8,
+      "name": "kit",
+      "price": 500,
+      "quantity": 10,
+      "description": "baby kit",
+      "category": "kit",
+      "url": "https://www.momshome.in/cdn/shop/files/14_6ea1bc0e-384b-49ec-91cf-28d90bb0acf5.jpg?v=1725011021"
+    },
+    {
+      "id": 9,
+      "name": "himalaya",
+      "price": 150,
+      "quantity": 10,
+      "description": "himayala product for bababy skin",
+      "category": "other",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPCvIONR3aNpGlPwNUOh8hj547yFEs2mU9pQ&s"
+    },
+    {
+      "name": "baby food",
+      "price": 600,
+      "quantity": 100,
+      "description": 10,
+      "category": "food",
+      "url": "https://images-cdn.ubuy.co.in/6607e2f43b797639e405cb9c-gerber-1st-foods-natural-for-baby-baby.jpg",
+      "id": 10
+    },
+    {
+      "id":11,
+      "name": "baby dess",
+      "price": 800,
+      "quantity": 100,
+      "description": "baby food ",
+      "category": "Dress",
+      "url": "https://www.littlesudhams.com/wp-content/uploads/2023/09/IMG_0548-600x800.jpeg"
+    }
+  ]
+}
