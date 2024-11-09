@@ -1,135 +1,7 @@
 {
   "users": [
     {
-      "id": "7f43",
-      "userName": "ggh",
-      "email": "habeebahusna@gmail.com",
-      "password": "1234",
-      "confirmPassword": "1234",
-      "phone": "223456"
-    },
-    {
-      "id": "b7fb",
-      "userName": "mk",
-      "email": "habeebahusna@gmail.com",
-      "password": "12",
-      "confirmPassword": "12",
-      "phone": "12"
-    },
-    {
-      "id": "6bb7",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "223"
-    },
-    {
-      "id": "73d3",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "223"
-    },
-    {
-      "id": "b18d",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "223"
-    },
-    {
-      "id": "23c5",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "22333"
-    },
-    {
-      "id": "7234",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "22333"
-    },
-    {
-      "id": "abba",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "22333"
-    },
-    {
-      "id": "8e60",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "22333"
-    },
-    {
-      "id": "a81c",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "22333"
-    },
-    {
-      "id": "61d7",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "22333"
-    },
-    {
-      "id": "b11e",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "22333"
-    },
-    {
-      "id": "609d",
-      "email": "admin@gmail.com",
-      "password": "123",
-      "userName": "WW",
-      "confirmPassword": "123",
-      "phone": "22333"
-    },
-    {
-      "id": "4fbd",
-      "email": "admin@gmail.com",
-      "password": "11",
-      "userName": "FF",
-      "confirmPassword": "11",
-      "phone": "2223"
-    },
-    {
-      "id": "c540",
-      "email": "admin@gmail.com",
-      "password": "11",
-      "userName": "FF",
-      "confirmPassword": "11",
-      "phone": "2223"
-    },
-    {
-      "id": "180f",
-      "email": "admin@gmail.com",
-      "password": "11",
-      "userName": "FF",
-      "confirmPassword": "11",
-      "phone": "2223"
-    },
-    {
-      "id": "76f0",
+      "id": "1cb3",
       "email": "habeebahusna@gmail.com",
       "password": "123",
       "userName": "habi",
@@ -137,120 +9,205 @@
       "phone": "1234567890"
     },
     {
-      "id": "8716",
-      "email": "habeebahusna@gmail.com",
+      "id": "e850",
+      "userName": "FF",
+      "email": "admin@gmail.com",
       "password": "1234",
-      "userName": "sss",
       "confirmPassword": "1234",
-      "phone": "2334566677"
+      "phone": "123456789",
+      "cart": [],
+      "order": []
     },
     {
-      "id": "1c47",
-      "email": "habeebahusna@gmail.com",
-      "password": "1234",
+      "id": "e505",
+      "email": "admin@gmail.com",
+      "password": "12",
       "userName": "sss",
-      "confirmPassword": "1234",
-      "phone": "2334566677"
+      "confirmPassword": "12",
+      "phone": "1234"
+    },
+    {
+      "id": "5680",
+      "userName": "ggh",
+      "email": "nusu@gmail.com",
+      "password": "23",
+      "confirmPassword": "23",
+      "phone": "4433",
+      "cart": [],
+      "order": []
     }
   ],
-"products": [
+  "products": [
     {
-      "id": 1,
-      "name": "Baby Onesie",
-      "image": "https://example.com/image1.jpg",
-      "description": "Soft and comfortable onesie for newborns.",
-      "price": 10.99,
-      "category": "Clothing",
-      "inStock": true
+      "id": "1",
+      "name": "Clogs with Strap Closure",
+      "price": 578,
+      "quantity": 15,
+      "description": "Babyoye Clogs with Strap Closure & Applique - Beige",
+      "category": "Footwear",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/15957684a.webp"
     },
     {
-      "id": 2,
-      "name": "Teething Toy",
-      "image": "https://example.com/image2.jpg",
-      "description": "Safe and chewable toy for teething babies.",
-      "price": 5.99,
-      "category": "Toys",
-      "inStock": true
-    },{
-      "id": 3,
-      "name": "born kit",
+      "id": "2",
+      "name": "Baby Play Mat",
+      "price": 700,
+      "quantity": 10,
+      "description": "YAMAMA Double Sided Water Proof Extra Large Fordable Foam Baby Play Mat (Color & Design May Vary)",
+      "category": "Nursery",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/13849915a.webp"
+    },
+    {
+      "id": "3",
+      "name": "Toothbrush",
+      "price": 160,
+      "quantity": 10,
+      "description": "U - Shape Toothbrush - Pink",
+      "category": "Health",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/11172605a.webp"
+    },
+    {
+      "id": "4",
+      "name": "Potty Chair",
+      "price": 3519,
+      "quantity": 10,
+      "description": "Babyhug Teeny Tiny Potty Chair With Lid - Blue AND Babyhug 3 in 1 Comfy High Chair - Brown",
+      "category": "Feeding",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/cc8454a.webp"
+    },
+    {
+      "id": "5",
+      "name": "Sleeper With Mosquito Net",
+      "price": 7388,
+      "quantity": 5,
+      "description": "Babyhug Opal 3 in 1 Cozy Rocker Sleeper With Mosquito Net- Beige(Without Toys)",
+      "category": "Gear",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/1694297a.webp"
+    },
+    {
+      "id": "6",
+      "name": "Frocks",
+      "price": 329,
+      "quantity": 7,
+      "description": "Doodle Poodle Cotton Full Sleeves Frock Floral Print - Red",
+      "category": "Clothes",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/438X531/18297516a.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Party Suit",
+      "price": 1248,
+      "quantity": 5,
+      "description": "Mark & Mia Full Sleeves 3 Piece Party Suit - Dark Blue",
+      "category": "Clothes",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/10225316a.webp"
+    },
+    {
+      "id": "8",
+      "name": "Sweater",
+      "price": 1124,
+      "quantity": 2,
+      "description": "Pine Kids Full Sleeves Front Open Hood Sweater - Mustard",
+      "category": "Clothes",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/17897522a.webp"
+    },
+    {
+      "id": "9",
+      "name": "Party Wear",
+      "price": 1000,
+      "quantity": 10,
+      "description": "Babyhug Party Wear One Shoulder Pleated Dress With Bow Applique - Maroon",
+      "category": "Clothes",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/16141735a.webp"
+    },
+    {
+      "id": "10",
+      "name": "Born kit",
       "price": 900,
       "quantity": 13,
-      "description": "new baby kit",
-      "category": "baby kit",
+      "description": "new baby kit with full items",
+      "category": "Baby kit",
       "url": "https://images-cdn.ubuy.co.in/634c292c296120706a53e026-zelinye-baby-care-kits-baby-grooming.jpg"
     },
     {
+      "id": "11",
+      "name": "Gear Jeep",
+      "price": 10083,
+      "quantity": 3,
+      "description": "Baybee Bronco Rechargeable Battery Operated Jeep for Kids, Ride on Toy Kids Car with Light & Music | Baby Big Battery Car | Electric Jeep Car for Kids (Painted Red)",
+      "category": "Gear",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/18949051a.webp"
+    },
+    {
+      "id": "12",
+      "name": "Swing and Slide",
+      "price": 6837,
+      "quantity": 5,
+      "description": "Babyhug 3 in 1 Swing and Slide with Basket Ball Hoop - Blue & Yellow ",
+      "category": "Toys",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/10690532a.webp"
+    },
+    {
+      "id": "13",
+      "name": "Wipes",
+      "price": 133,
+      "quantity": 10,
+      "description": "Babyhug Milk Daily Moisturising Baby Wet Wipes 98% Water - 72 Pieces",
+      "category": "Diapering",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/8041730a.webp"
+    },
+    {
+      "id": "14",
+      "name": "Diapers",
+      "price": 513,
+      "quantity": 10,
+      "description": "MamyPoko Pant Style Diapers XXX Large - 7 Pieces - (Pack of 2)",
+      "category": "Diapering",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/438x531/cc9148a.webp"
+    },
+    {
+      "id": "15",
+      "name": "Tedibar Moisturising Baby Bathing Bar",
+      "price": 520,
+      "quantity": 25,
+      "description": "Tedibar Moisturising Baby Bathing Bar 75gx3 (Pack of 1) with Skin Friendly pH 100 Percent Soap Free Prevents Dryness & Rashes Dermatologically Tested - By Torrent Pharma",
+      "category": "Bathing",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/3593529a.webp"
+    },
+    {
+      "id": "16",
+      "name": "Sebamed Baby Gentle Wash",
+      "price": 1365.91,
+      "quantity": 5,
+      "description": "Sebamed Baby Gentle Wash - 400 ml (pack of 2)",
+      "category": "Bathing",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/cc6906a.webp"
+    },
+    {
+      "id": "17",
       "name": "junior horlicks",
       "price": 300,
-      "quantity": 99,
-      "description": 10,
-      "category": "food",
-      "url": "https://5.imimg.com/data5/UD/OK/MY-24695322/selection_114.png",
-      "id": 4
+      "quantity": 50,
+      "description": "junior horlicks Scientifically Designed Nutrition Health Drink ",
+      "category": "Kids Food & Nutritional Supplements",
+      "url": "https://5.imimg.com/data5/UD/OK/MY-24695322/selection_114.png"
     },
     {
-      "id": 5,
+      "id": "18",
       "name": "pediasure",
-      "price": 1400,
-      "quantity": 9,
-      "description": "this for the student",
-      "category": "food",
-      "url": "https://www.bigbasket.com/media/uploads/p/xxl/20005378_13-pediasure-nutritional-powder-complete-balanced-premium-chocolate.jpg"
-    },
-    {
-      "name": "max",
-      "price": 1000,
+      "price": 731,
       "quantity": 10,
-      "description": 10,
-      "category": "Dress",
-      "url": "https://images.meesho.com/images/products/400059299/8huvg_512.webp",
-      "id": 6
+      "description": "Pediasure Scientifically Designed Nutrition Health Drink Vanilla-375gm",
+      "category": "Kids Food & Nutritional Supplements",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/9629594a.webp"
     },
     {
-      "name": "toys",
-      "price": 450,
+      "id": "19",
+      "name": "Peanut Butter",
+      "price": 185,
       "quantity": 10,
-      "description": 10,
-      "category": "toys",
-      "url": "https://media.post.rvohealth.io/wp-content/uploads/2022/04/UPDATE-1809308-The-Best-Baby-Food-Jars-Pouches-Organic-and-More-1200x628-Facebook-1200x628.jpg",
-      "id": 7
-    },
-    {
-      "id": 8,
-      "name": "kit",
-      "price": 500,
-      "quantity": 10,
-      "description": "baby kit",
-      "category": "kit",
-      "url": "https://www.momshome.in/cdn/shop/files/14_6ea1bc0e-384b-49ec-91cf-28d90bb0acf5.jpg?v=1725011021"
-    },
-    {
-      "id": 9,
-      "name": "himalaya",
-      "price": 150,
-      "quantity": 10,
-      "description": "himayala product for bababy skin",
-      "category": "other",
-      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPCvIONR3aNpGlPwNUOh8hj547yFEs2mU9pQ&s"
-    },
-    {
-      "name": "baby food",
-      "price": 600,
-      "quantity": 100,
-      "description": 10,
-      "category": "food",
-      "url": "https://images-cdn.ubuy.co.in/6607e2f43b797639e405cb9c-gerber-1st-foods-natural-for-baby-baby.jpg",
-      "id": 10
-    },
-    {
-      "id":11,
-      "name": "baby dess",
-      "price": 800,
-      "quantity": 100,
-      "description": "baby food ",
-      "category": "Dress",
-      "url": "https://www.littlesudhams.com/wp-content/uploads/2023/09/IMG_0548-600x800.jpeg"
+      "description": "Jus Amazin Creamy Organic Peanut Butter Unsweetened - 200 g",
+      "category": "Kids Food & Nutritional Supplements",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/12245190a.webp"
     }
   ]
 }
