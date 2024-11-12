@@ -244,8 +244,12 @@ const Login = () => {
                     toast.success("Login successful");
                     localStorage.setItem("id", user.id);
                     resetForm();
-                    navigate('/productList');
-                } else {
+                    navigate('/');
+                    localStorage.setItem("id",user.id)
+                    localStorage.setItem("name",user.userName)
+                }
+                
+                else {
                     toast.error("Invalid email or password");
                 }
             } catch (error) {

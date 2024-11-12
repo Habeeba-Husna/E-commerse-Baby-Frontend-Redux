@@ -1,72 +1,200 @@
-// import React from 'react';
-// import { useCart } from './CartContext'; // Use the Cart Context
-// import { useNavigate } from 'react-router-dom';
 
-// const Cart = () => {
-//   const { cartItems, removeFromCart, updateQuantity } = useContext(UserContext);
+import  React,{ useContext, useState } from "react";
+import { UserContext } from '../../Context/UserContext';
+import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
+
+function Cart() {
+  const navigate = useNavigate();
+    const { cart,totalPrice,removeFromCart} = useContext(UserContext);
+
+    const[cartquantity,setCartquantity]=useState(0)
+
+    const decrement= (id)=>{
+      setCartquantity((prevcounts)=>({
+        ...prevcounts,[id]: Math.max(prevcounts[id] || 1) -1
+    }))
+}
+const increment=(id)=>{
+    setCartquantity((prevcounts)=>({
+        ...prevcounts,[id]:(prevcounts[id] || 1) +1
+    }))
+}
+
+  return (
+    <div>
+      <Navbar/>
+    <div className="px-4 sm:px-6 lg:px-8">
+    <h1 className="text-2xl font-semibold text-center mb-6 pt-5">YOUR CART</h1>
+    
+    {cart.length === 0 ? (
+        <div className="flex flex-col items-center justify-center h-full">
+        <h1 className="text-lg text-center mb-4">Your cart is currently empty.</h1>
+        <button onClick={() => navigate('/')} className="bg-blue-500 text-white px-6 py-2 rounded-xl">
+          Shop now
+        </button>
+      </div>
+    ) : (
+        <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                {cart.map((product) => (
+                    <div key={product.id} className="border rounded-lg shadow-lg p-4">
+                        <img
+                            src={product.url}
+                            alt={product.name}
+                            className="w-full h-60 rounded-t object-cover mb-4"
+                        />
+                        <h1 className="text-lg font-semibold text-center">{product.name}</h1>
+                        <p className="text-center text-gray-700"> ₹ {product.price}</p>
+
+                        <div className="flex items-center justify-center mt-2">
+                                    <div className="flex items-center justify-between w-1/3 bg-gray-100 p-2 rounded">
+                                        <button onClick={() => decrement(product.id)} className="bg-gray-200 rounded px-2 flex items-center justify-center text-xl font-bold hover:bg-gray-400">-</button>
+                                        <span>{cartquantity[product.id] || 1}</span>
+                                        <button onClick={() => increment(product.id)} className="bg-gray-200 rounded px-2 flex items-center justify-center text-xl font-bold hover:bg-gray-400"> +</button>
+                                    </div>
+                                </div>
+                                {/* <p className="text-center text-gray-700">Quantity {product.quantity}</p> */}
+
+                        <button 
+                            className="bg-black text-white px-6 py-2 rounded-2xl w-full mt-4 hover:bg-red-600 text-sm"
+                            onClick={() => removeFromCart(product)}
+                           >
+                           REMOVE
+                        </button>
+                    </div>
+                ))}
+            </div>
+
+            <div className="flex flex-col items-center sm:items-end">
+                        <div className="flex items-center justify-between w-full sm:w-auto mb-4">
+                            <h1 className="text-xl font-semibold">TOTAL:  ₹ {totalPrice}</h1>
+                        </div>
+                        <button 
+                            className="bg-gray-200 text-black px-8 py-2 rounded-2xl hover:bg-green-900 hover:text-white text-sm"
+                            onClick={() => navigate('/order')}
+                        >
+                            PLACE YOUR ORDER
+                        </button>
+                    </div>
+                </div>
+            )}
+      </div>
+      </div>
+    );
+}
+
+export default Cart
+
+
+
+// import  React,{ useContext, useState } from "react";
+// import { UserContext } from '../../Context/UserContext';
+// import { useNavigate } from "react-router-dom";
+// import Navbar from "../Navbar/Navbar";
+
+
+// function Cart() {
 //   const navigate = useNavigate();
+//   const { cart, removeFromCart } = useContext(UserContext);
 
-  // Calculate total price
-  // const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+//   const [cartQuantity, setCartQuantity] = useState({});
+//   const [totalPrice, setTotalPrice] = useState(0);
 
-  // // Handle quantity change
-  // const handleQuantityChange = (e, productId) => {
-  //   const newQuantity = parseInt(e.target.value, 10);
-  //   if (newQuantity >= 1) {
-  //     updateQuantity(productId, newQuantity);
-  //   }
-  // };
+//   // Function to calculate the total price whenever quantity changes
+//   useEffect(() => {
+//     let price = 0;
+//     cart.forEach((product) => {
+//       const quantity = cartQuantity[product.id] || 1; // Default to 1 if no quantity set
+//       price += product.price * quantity;
+//     });
+//     setTotalPrice(price);
+//   }, [cart, cartQuantity]);
+
+//   const decrement = (id) => {
+//     setCartQuantity((prevCounts) => ({
+//       ...prevCounts,
+//       [id]: Math.max((prevCounts[id] || 1) - 1, 1), // Ensure quantity doesn't go below 1
+//     }));
+//   };
+
+//   const increment = (id) => {
+//     setCartQuantity((prevCounts) => ({
+//       ...prevCounts,
+//       [id]: (prevCounts[id] || 1) + 1,
+//     }));
+//   };
 
 //   return (
-//     <div className="container mx-auto p-4">
-//       <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Your Cart</h1>
-//       {cartItems.length === 0 ? (
-//         <p className="text-center text-gray-600">Your cart is empty!</p>
-//       ) : (
-//         <div className="space-y-4">
-//           {cartItems.map((item) => (
-//             <div key={item.id} className="flex justify-between items-center bg-white p-4 shadow-lg rounded-lg">
-//               <div className="flex items-center space-x-4">
-//                 <img
-//                   src={item.url}
-//                   alt={item.name}
-//                   className="w-16 h-16 object-cover rounded"
-//                 />
-//                 <div>
-//                   <p className="text-lg font-semibold text-gray-800">{item.name}</p>
-//                   <p className="text-gray-600">Price: ${item.price.toFixed(2)}</p>
-//                 </div>
-//               </div>
-//               <div className="flex items-center space-x-2">
-//                 <input
-//                   type="number"
-//                   value={item.quantity}
-//                   min="1"
-//                   className="w-12 p-2 text-center border rounded"
-//                   onChange={(e) => handleQuantityChange(e, item.id)}
-//                 />
-//                 <button
-//                   onClick={() => removeFromCart(item.id)}
-//                   className="text-red-500 hover:text-red-700"
-//                 >
-//                   Remove
-//                 </button>
-//               </div>
-//             </div>
-//           ))}
-//           <div className="flex justify-between items-center bg-gray-100 p-4 mt-4 rounded-lg">
-//             <p className="text-lg font-semibold text-gray-800">Total: ${totalPrice.toFixed(2)}</p>
-//             <button
-//               onClick={() => navigate('/checkout')}
-//               className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
-//             >
-//               Proceed to Checkout
+//     <div>
+//       <Navbar />
+//       <div className="px-4 sm:px-6 lg:px-8">
+//         <h1 className="text-2xl font-semibold text-center mb-6 pt-5">YOUR CART</h1>
+
+//         {cart.length === 0 ? (
+//           <div className="flex flex-col items-center justify-center h-full">
+//             <h1 className="text-lg text-center mb-4">Your cart is currently empty.</h1>
+//             <button onClick={() => navigate('/')} className="bg-blue-500 text-white px-6 py-2 rounded-xl">
+//               Shop now
 //             </button>
 //           </div>
-//         </div>
-//       )}
+//         ) : (
+//           <div>
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+//               {cart.map((product) => (
+//                 <div key={product.id} className="border rounded-lg shadow-lg p-4">
+//                   <img
+//                     src={product.url}
+//                     alt={product.name}
+//                     className="w-full h-60 rounded-t object-cover mb-4"
+//                   />
+//                   <h1 className="text-lg font-semibold text-center">{product.name}</h1>
+//                   <p className="text-center text-gray-700">₹ {product.price}</p>
+
+//                   <div className="flex items-center justify-center mt-2">
+//                     <div className="flex items-center justify-between w-1/3 bg-gray-100 p-2 rounded">
+//                       <button
+//                         onClick={() => decrement(product.id)}
+//                         className="bg-gray-200 rounded px-2 flex items-center justify-center text-xl font-bold hover:bg-gray-400"
+//                       >
+//                         -
+//                       </button>
+//                       <span>{cartQuantity[product.id] || 1}</span>
+//                       <button
+//                         onClick={() => increment(product.id)}
+//                         className="bg-gray-200 rounded px-2 flex items-center justify-center text-xl font-bold hover:bg-gray-400"
+//                       >
+//                         +
+//                       </button>
+//                     </div>
+//                   </div>
+
+//                   <button
+//                     className="bg-black text-white px-6 py-2 rounded-2xl w-full mt-4 hover:bg-red-600 text-sm"
+//                     onClick={() => removeFromCart(product)}
+//                   >
+//                     REMOVE
+//                   </button>
+//                 </div>
+//               ))}
+//             </div>
+
+//             <div className="flex flex-col items-center sm:items-end">
+//               <div className="flex items-center justify-between w-full sm:w-auto mb-4">
+//                 <h1 className="text-xl font-semibold">TOTAL: ₹ {totalPrice.toFixed(2)}</h1>
+//               </div>
+//               <button
+//                 className="bg-gray-200 text-black px-8 py-2 rounded-2xl hover:bg-green-900 hover:text-white text-sm"
+//                 onClick={() => navigate('/order')}
+//               >
+//                 PLACE YOUR ORDER
+//               </button>
+//             </div>
+//           </div>
+//         )}
+//       </div>
 //     </div>
 //   );
-// };
+// }
 
 // export default Cart;

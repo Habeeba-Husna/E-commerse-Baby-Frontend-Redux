@@ -1,227 +1,96 @@
-// import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
-// export const UserContext = createContext();
-
-// export const UserProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
-
-//   return (
-//     <UserContext.Provider value={{ user, setUser }}>
-//       {children}
-//     </UserContext.Provider>
-//   );
-// };
+export const UserContext = createContext();
 
 
-// import React, { createContext, useState, useContext } from 'react';
+export const UserContextProvider = ({ children }) => {
+    const [cart, setCart] = useState([]);
+    const [loading, setLoading] = useState(true); // Add loading state
+    const [error, setError] = useState(null); // Add error state
 
-// // Create a Cart Context
-// const CartContext = createContext();
+    useEffect(() => {
+        const id = localStorage.getItem("id");
+        const fetchCart = async () => {
+            if (!id) {
+                setError('User ID is null. Please log in.');
+                setLoading(false);
+                return;
+            }
 
-// // Cart Provider component to wrap around your app
-// export const CartProvider = ({ children }) => {
-//   const [cartItems, setCartItems] = useState([]);
-  
-//   // Add an item to the cart
-//   const addToCart = (product) => {
-//     setCartItems((prevItems) => {
-//       const existingProduct = prevItems.find(item => item.id === product.id);
-//       if (existingProduct) {
-//         // If product already exists, update the quantity
-//         return prevItems.map(item =>
-//           item.id === product.id
-//             ? { ...item, quantity: item.quantity + 1 }
-//             : item
-//         );
-//       } else {
-//         // If product doesn't exist, add it to the cart
-//         return [...prevItems, { ...product, quantity: 1 }];
-//       }
-//     });
-//   };
+            try {
+                const response = await axios.get(`http://localhost:5000/users/${id}`);
+                setCart(response.data.cart);
+            } catch (err) {
+                setError(err.message || 'Failed to fetch cart data.');
+                toast.error('Failed to fetch cart data.');
+            } finally {
+                setLoading(false);
+            }
+        };
 
-//   // Remove an item from the cart
-//   const removeFromCart = (productId) => {
-//     setCartItems((prevItems) => prevItems.filter(item => item.id !== productId));
-//   };
+        fetchCart();
+    }, []); // Run once when the component mounts
 
-//   // Update quantity of a product
-//   const updateQuantity = (productId, quantity) => {
-//     setCartItems((prevItems) => {
-//       return prevItems.map(item =>
-//         item.id === productId
-//           ? { ...item, quantity }
-//           : item
-//       );
-//     });
-//   };
-
-//   return (
-//     <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity }}>
-//       {children}
-//     </CartContext.Provider>
-//   );
-// };
-
-// // Custom hook to use Cart Context
-// export const useCart = () => useContext(CartContext);
-
-
-
-
-// import axios from "axios";
-// import { createContext, useEffect, useState } from "react";
-// import toast from 'react-hot-toast';
-
-
-// export const Shopcontext = createContext();
-
-// const ShopContextProvider = ({ children }) => {
-//     const [products, setProducts] = useState([]);
-//     const [cart , setCart] = useState([]);
-//     // const [order , setOrder] = useState([]);
-//     // const [isLoggedIn,setIsloggedIn]=useState(false)
-       
-//     const id = localStorage.getItem('id');
-//     const name=localStorage.getItem('name');
-
-//     // useEffect(()=>{
-//     //     const id = localStorage.getItem('id');
-//     //   if(id){
-//     //     setIsloggedIn(true);
-//     //   }
-//     //   else{
-//     //     setIsloggedIn(false)
-//     //   }
-//     // },[])
-
-//     useEffect(() => { 
-//         async function fetchData() {
-//             try {
-//                 const response = await axios.get(`http://localhost:3001/products`);
-//                 setProducts(response.data);     
-//             } catch (error) {
-//                 console.log(error.message);
-//             }
-//         }
-//         fetchData();
-//     }, []); 
-
-//     useEffect(() => {
-        
-//         let id=localStorage.getItem('id')
-//             axios.get(`http://localhost:3001/user/${id}`)
-//             .then((res) => {
-//                 setCart(res.data.cart);
-//             })
-//             .catch((error) => console.log(error));
-          
-       
-//     },[])
-   
-
-//     // useEffect(() => {
-//     //     const id = localStorage.getItem("id"); 
-//     //     if(!id){
-//     //         return
-//     //     }
-//     //     axios.get(`http://localhost:3001/user/${id}`)
-//     //     .then((res) => {
-//     //         setOrder(res.data.order);
-//     //     })
-//     //     .catch((error) => console.log(error))
-//     // },[])
-
-//     const addToCart =  (item) => {
-//         const id = localStorage.getItem("id"); 
-//         const findCart = cart.find((cartitem) => item.id === cartitem.id);
+    // Calculate total price
+    const totalPrice = cart.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
+    // console.log(totalPrice);
     
-       
-        
-//         if(findCart) {
-//             toast.success('Item added successfully🛒');
-//             return;
-            
-//         }else{
-//             const updatedCart = [...cart , item];
-           
-//             axios 
-//             .patch(`http://localhost:3001/user/${id}` , {cart : updatedCart})
-//             .then((res) => console.log('success'))
-//             .catch((error) => console.log(`error`))
-            
-//             setCart(updatedCart)
-//         }
-        
-//     }
 
-//     const  removeFromcart = (itemid) => {
-//         const id = localStorage.getItem("id"); 
-//         const removedata  =cart.filter((cartitem) => cartitem.id !== itemid);
-        
-//         axios
-//         .patch(`http://localhost:3001/user/${id}`,{cart : removedata })
-//         .then((res) => console.log(`success`))
-//         .catch((error) => console.log(error))
-        
-//         setCart(removedata)
-//     } 
+    const addToCart = async (product) => {
+        const userId = localStorage.getItem("id");
+        console.log('Product ID:', product.id);
 
-//     const incrementQuantity = (itemid) => {
-//         const id = localStorage.getItem("id");
-//         setCart((prevCart) => {
-//             const newCart = prevCart.map((item) => item.id === itemid ? {...item ,quantity: item.quantity + 1 } : item)
-//         //  console.log(newCart)
+        try {
+            const productResponse = await axios.get(`http://localhost:5000/products/${product.id}`);
+            const currentProduct = productResponse.data;
 
-//         axios
-//         .patch(`http://localhost:3001/user/${id}`,{cart : newCart })
-//         .then((res) => {
-//             console.log(res);
-//         })
-//         .catch((error) => {
-//             console.log('Error updating cart : ', error);
-//         })
-//         return newCart
-//     })
-// }
+            const userResponse = await axios.get(`http://localhost:5000/users/${userId}`);
+            const userCart = userResponse.data.cart;
 
-//     const decrementQuantity = (itemid) => {
-//         const id = localStorage.getItem("id");
-//         setCart ((prevCart) =>{
-             
-//             const newCart = prevCart.map ((item) => item.id === itemid ? {...item , quantity: item.quantity > 1 ? item.quantity - 1 : item.quantity} : item);
-//         axios 
-//         .patch(`http://localhost:3001/user/${id}`,{cart : newCart })
-    
-//     .then((res) => {
-//         console.log("Cart updated successfully");
-        
-//     })
-//     .catch((error) => {
-//         console.log("Error updating cart :" , error);
-        
-//     })
-//     return newCart;
-// })
-// }
+             // Check if the item already exists in the cart
+            const existingCartItem = userCart.find(item => item.id === product.id);
+            if (existingCartItem) {
+                if (existingCartItem.quantity + 1 > currentProduct.quantity) {
+                    toast.error(`Cannot add more of ${currentProduct.name}. Only ${currentProduct.quantity - existingCartItem.quantity} left in stock.`);
+                    return;
+                }
 
-// const addToOrder = (orderdata) => {
-//     const id = localStorage.getItem("id"); 
-    
-//     const updatedorder = [...order , orderdata];
+                const updatedCartItem = { 
+                    ...existingCartItem, 
+                    quantity: existingCartItem.quantity + 1 
+                };
+                const remainingCart = userCart.filter((item) => item.id !== updatedCartItem.id);
+                await axios.patch(`http://localhost:5000/users/${userId}`, { cart: [...remainingCart, updatedCartItem] });
+                setCart(prevCart => prevCart.map(item => item.id === product.id ? updatedCartItem : item));
+                toast.success(`Increased quantity of ${currentProduct.name} in the cart.`);
+            } else {
+                const newCartItem = { ...product, quantity: 1 };
+                await axios.patch(`http://localhost:5000/users/${userId}`, { cart: [...userCart, newCartItem] });
+                setCart(prevCart => [...prevCart, newCartItem]);
+                toast.success("Item added to cart 🛒");
+            }
+        } catch (err) {
+            toast.error('Failed to add product to the cart. Please try again.');
+        }
+    };
+    const removeFromCart=(product)=>{
+        const id=localStorage.getItem("id")
+        console.log(product)
+        const deletedCart=cart.filter((item)=>item.id!==product.id)
+        axios.patch(`http://localhost:5000/users/${id}`,{
+            cart:deletedCart
+        })
+        .then(()=>{
+            setCart(deletedCart)
+        })
+    }
 
-//     axios .patch(`http://localhost:3001/user/${id}`,{order : updatedorder})
-//     .then((res) => console.log('success'))
-//     .catch((error) => console.log('error'))
-// }
-
-//     return (
-//         <Shopcontext.Provider value={{ products , cart , addToCart , 
-//         removeFromcart , incrementQuantity , decrementQuantity , setCart ,
-//          addToOrder , isLoggedIn , id , name , setIsloggedIn , setProducts}}>
-//             {children}
-//         </Shopcontext.Provider>
-//     );
-// };
-
-// export default ShopContextProvider;
+    return (
+        <UserContext.Provider value={{ cart, addToCart, loading, error, removeFromCart,totalPrice}}>
+            {children}
+            <ToastContainer />
+        </UserContext.Provider>
+    );
+};

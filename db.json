@@ -34,6 +34,34 @@
       "confirmPassword": "23",
       "phone": "4433",
       "cart": [],
+      "order": [
+        {
+          "name": "Habeeba Husna E P",
+          "address": "hjk",
+          "paymentMethod": "Credit Card",
+          "items": [
+            {
+              "id": "3",
+              "name": "Toothbrush",
+              "price": 160,
+              "quantity": 1,
+              "description": "U - Shape Toothbrush - Pink",
+              "category": "Health",
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/11172605a.webp"
+            }
+          ],
+          "total": 160
+        }
+      ]
+    },
+    {
+      "id": "25bb",
+      "userName": "habi",
+      "email": "habeebahusna@gmail.com",
+      "password": "12",
+      "confirmPassword": "12",
+      "phone": "1234567890",
+      "cart": [],
       "order": []
     }
   ],
