@@ -1,39 +1,32 @@
 {
   "users": [
     {
-      "id": "1cb3",
-      "email": "habeebahusna@gmail.com",
-      "password": "123",
-      "userName": "habi",
-      "confirmPassword": "123",
-      "phone": "1234567890"
-    },
-    {
-      "id": "e850",
-      "userName": "FF",
-      "email": "admin@gmail.com",
-      "password": "1234",
-      "confirmPassword": "1234",
-      "phone": "123456789",
-      "cart": [],
-      "order": []
-    },
-    {
-      "id": "e505",
-      "email": "admin@gmail.com",
-      "password": "12",
-      "userName": "sss",
-      "confirmPassword": "12",
-      "phone": "1234"
-    },
-    {
       "id": "5680",
       "userName": "ggh",
       "email": "nusu@gmail.com",
       "password": "23",
       "confirmPassword": "23",
       "phone": "4433",
-      "cart": [],
+      "cart": [
+        {
+          "id": "18",
+          "name": "pediasure",
+          "price": 731,
+          "quantity": 1,
+          "description": "Pediasure Scientifically Designed Nutrition Health Drink Vanilla-375gm",
+          "category": "Kids Food & Nutritional Supplements",
+          "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/9629594a.webp"
+        },
+        {
+          "id": "19",
+          "name": "Peanut Butter",
+          "price": 185,
+          "quantity": 1,
+          "description": "Jus Amazin Creamy Organic Peanut Butter Unsweetened - 200 g",
+          "category": "Kids Food & Nutritional Supplements",
+          "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/12245190a.webp"
+        }
+      ],
       "order": [
         {
           "name": "Habeeba Husna E P",
@@ -51,18 +44,88 @@
             }
           ],
           "total": 160
+        },
+        {
+          "name": "eer",
+          "address": "sdffgff",
+          "paymentMethod": "Credit Card",
+          "items": [
+            {
+              "id": "2",
+              "name": "Baby Play Mat",
+              "price": 700,
+              "quantity": 1,
+              "description": "YAMAMA Double Sided Water Proof Extra Large Fordable Foam Baby Play Mat (Color & Design May Vary)",
+              "category": "Nursery",
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/13849915a.webp"
+            }
+          ],
+          "total": 700
         }
       ]
     },
     {
-      "id": "25bb",
+      "id": "6103",
       "userName": "habi",
       "email": "habeebahusna@gmail.com",
-      "password": "12",
-      "confirmPassword": "12",
-      "phone": "1234567890",
+      "password": "123",
+      "confirmPassword": "123",
+      "phone": "2333546",
       "cart": [],
-      "order": []
+      "order": [
+        {
+          "name": "Habeeba Husna",
+          "address": "werty",
+          "paymentMethod": "Credit Card",
+          "items": [
+            {
+              "id": "19",
+              "name": "Peanut Butter",
+              "price": 185,
+              "quantity": 1,
+              "description": "Jus Amazin Creamy Organic Peanut Butter Unsweetened - 200 g",
+              "category": "Kids Food & Nutritional Supplements",
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/12245190a.webp"
+            },
+            {
+              "id": "18",
+              "name": "pediasure",
+              "price": 731,
+              "quantity": 1,
+              "description": "Pediasure Scientifically Designed Nutrition Health Drink Vanilla-375gm",
+              "category": "Kids Food & Nutritional Supplements",
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/9629594a.webp"
+            }
+          ],
+          "total": 916
+        },
+        {
+          "name": "fgg",
+          "address": "dfgf",
+          "paymentMethod": "Credit Card",
+          "items": [
+            {
+              "id": "6",
+              "name": "Frocks",
+              "price": 329,
+              "quantity": 1,
+              "description": "Doodle Poodle Cotton Full Sleeves Frock Floral Print - Red",
+              "category": "Clothes",
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/438X531/18297516a.jpg"
+            },
+            {
+              "id": "5",
+              "name": "Sleeper With Mosquito Net",
+              "price": 7388,
+              "quantity": 1,
+              "description": "Babyhug Opal 3 in 1 Cozy Rocker Sleeper With Mosquito Net- Beige(Without Toys)",
+              "category": "Gear",
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/1694297a.webp"
+            }
+          ],
+          "total": 7717
+        }
+      ]
     }
   ],
   "products": [

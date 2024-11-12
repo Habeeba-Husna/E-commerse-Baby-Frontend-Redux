@@ -4,11 +4,12 @@ import { toast, ToastContainer } from 'react-toastify';
 
 export const UserContext = createContext();
 
-
 export const UserContextProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-    const [loading, setLoading] = useState(true); // Add loading state
-    const [error, setError] = useState(null); // Add error state
+    // Add loading state
+    const [loading, setLoading] = useState(true);
+    // Add error state
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const id = localStorage.getItem("id");
@@ -31,12 +32,12 @@ export const UserContextProvider = ({ children }) => {
         };
 
         fetchCart();
-    }, []); // Run once when the component mounts
+        // Run once when the component mounts
+    }, []);
 
     // Calculate total price
     const totalPrice = cart.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
     // console.log(totalPrice);
-    
 
     const addToCart = async (product) => {
         const userId = localStorage.getItem("id");
@@ -49,7 +50,7 @@ export const UserContextProvider = ({ children }) => {
             const userResponse = await axios.get(`http://localhost:5000/users/${userId}`);
             const userCart = userResponse.data.cart;
 
-             // Check if the item already exists in the cart
+            // Check if the item already exists in the cart
             const existingCartItem = userCart.find(item => item.id === product.id);
             if (existingCartItem) {
                 if (existingCartItem.quantity + 1 > currentProduct.quantity) {
@@ -57,9 +58,9 @@ export const UserContextProvider = ({ children }) => {
                     return;
                 }
 
-                const updatedCartItem = { 
-                    ...existingCartItem, 
-                    quantity: existingCartItem.quantity + 1 
+                const updatedCartItem = {
+                    ...existingCartItem,
+                    quantity: existingCartItem.quantity + 1
                 };
                 const remainingCart = userCart.filter((item) => item.id !== updatedCartItem.id);
                 await axios.patch(`http://localhost:5000/users/${userId}`, { cart: [...remainingCart, updatedCartItem] });
@@ -75,20 +76,20 @@ export const UserContextProvider = ({ children }) => {
             toast.error('Failed to add product to the cart. Please try again.');
         }
     };
-    const removeFromCart=(product)=>{
-        const id=localStorage.getItem("id")
+    const removeFromCart = (product) => {
+        const id = localStorage.getItem("id")
         console.log(product)
-        const deletedCart=cart.filter((item)=>item.id!==product.id)
-        axios.patch(`http://localhost:5000/users/${id}`,{
-            cart:deletedCart
+        const deletedCart = cart.filter((item) => item.id !== product.id)
+        axios.patch(`http://localhost:5000/users/${id}`, {
+            cart: deletedCart
         })
-        .then(()=>{
-            setCart(deletedCart)
-        })
+            .then(() => {
+                setCart(deletedCart)
+            })
     }
 
     return (
-        <UserContext.Provider value={{ cart, addToCart, loading, error, removeFromCart,totalPrice}}>
+        <UserContext.Provider value={{ cart, addToCart, loading, error, removeFromCart, totalPrice }}>
             {children}
             <ToastContainer />
         </UserContext.Provider>
