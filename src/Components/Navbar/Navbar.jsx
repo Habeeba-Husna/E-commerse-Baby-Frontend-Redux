@@ -138,17 +138,19 @@
 
 
 
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaShoppingCart, FaUser, FaHeart, FaBars } from 'react-icons/fa';
+import { FaShoppingCart, FaHeart, FaBars } from 'react-icons/fa';
 import { CgProfile } from "react-icons/cg";
 import { useRef } from 'react';
+import { FaShopify } from "react-icons/fa";
+
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const mobileMenuRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);//to track whether the mobile menu is open or not.
+  const mobileMenuRef = useRef(null);// reference for the mobile menu to manage interactions
 
   const handleCart = () => {
     if (!localStorage.getItem("id")) {
@@ -176,12 +178,28 @@ const Navbar = () => {
     }
   };
 
+//   const handleWishlist = (product) => {
+//     if (!localStorage.getItem("id")) {
+//         toast.error("You must be logged in");
+//     } else {
+//         if (wishlist.some(item => item.id === product.id)) {
+//             removeFromWishlist(product.id);
+//             toast.info("Removed from wishlist");
+//         } else {
+//             addToWishlist(product);
+//             toast.success("Added to wishlist");
+//         }
+//     }
+// };
+
+
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <Link to="/" className="font-bold text-2xl sm:text-3xl text-white">
-            BABY SHOP
+          <Link to="/" className="font-bold text-2xl sm:text-3xl text-white flex items-center">
+          <FaShopify className="text-white mr-2" />  
+            Ellor@S
           </Link>
         </div>
 
@@ -204,8 +222,19 @@ const Navbar = () => {
               <FaHeart className="text-xl" />
             </button>
 
+
+            {/* <button onClick={() => handleWishlist(product)} className="wishlist-button">
+            <FaHeart className="text-xl" />
+            {wishlist.some(item => item.id === product.id) ? "Remove from Wishlist" : "Add to Wishlist"}
+        </button> */}
+
+
             <div className="relative group">
+              <div className='flex gap-2'>
               <CgProfile className="text-3xl text-white cursor-pointer" />
+              <span className='text-white'>{localStorage.getItem("name")}</span>
+              </div>
+             
               <div className="hidden group-hover:block absolute right-0 bg-white rounded shadow-lg p-2">
                 {!localStorage.getItem('id') && (
                   <Link to='/Login' className="block px-4 py-2 text-gray-700 hover:bg-gray-200">
@@ -244,6 +273,7 @@ const Navbar = () => {
           <button className="block text-white text-center">
             WishList
           </button>
+          
           {!localStorage.getItem('id') && (
             <Link to='/Login' className="block text-white text-center">
               Login
@@ -254,7 +284,7 @@ const Navbar = () => {
           </button>
           {localStorage.getItem('id') && (
             <button onClick={handleLogout} className="block text-white text-center">
-              Logout
+              Logout 
             </button>
           )}
         </div>

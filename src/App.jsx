@@ -8,6 +8,7 @@ import Cart from './Components/User/Cart';
 import Order from './Components/User/Order';
 import OrderList from './Components/User/OrderList';
 import { UserContextProvider } from './Context/UserContext';
+// import Wishlist from './Components/User/WishList';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<Order />} />
           <Route path="/orderList" element={<OrderList />} />
+          {/* <Route path="/wishlist" element={<Wishlist />} /> */}
           {/* <Route path="/first" element={<FirstPage/>} /> */}
         </Routes>
       </UserContextProvider>

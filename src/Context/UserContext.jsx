@@ -6,10 +6,9 @@ export const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-    // Add loading state
-    const [loading, setLoading] = useState(true);
-    // Add error state
-    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);// Add loading state
+    const [error, setError] = useState(null);// Add error state
+    // const [wishlist, setWishlist] = useState([]);
 
     useEffect(() => {
         const id = localStorage.getItem("id");
@@ -63,13 +62,14 @@ export const UserContextProvider = ({ children }) => {
                     quantity: existingCartItem.quantity + 1
                 };
                 const remainingCart = userCart.filter((item) => item.id !== updatedCartItem.id);
-                await axios.patch(`http://localhost:5000/users/${userId}`, { cart: [...remainingCart, updatedCartItem] });
+                await axios.patch(`http://localhost:5000/users/${userId}`, { cart: [...remainingCart, updatedCartItem] });//to come change in db while increasing quantity
                 setCart(prevCart => prevCart.map(item => item.id === product.id ? updatedCartItem : item));
                 toast.success(`Increased quantity of ${currentProduct.name} in the cart.`);
             } else {
                 const newCartItem = { ...product, quantity: 1 };
-                await axios.patch(`http://localhost:5000/users/${userId}`, { cart: [...userCart, newCartItem] });
-                setCart(prevCart => [...prevCart, newCartItem]);
+                await axios.patch(`http://localhost:5000/users/${userId}`, { cart: [...userCart, newCartItem] });//patch adds the new item to the db(backend) cart.
+                //await wait until the backend confirms the update before proceeding, ensuring the database has the new cart data.
+                setCart(prevCart => [...prevCart, newCartItem]);//adds this new item to the cart state.
                 toast.success("Item added to cart 🛒");
             }
         } catch (err) {
@@ -80,13 +80,23 @@ export const UserContextProvider = ({ children }) => {
         const id = localStorage.getItem("id")
         console.log(product)
         const deletedCart = cart.filter((item) => item.id !== product.id)
-        axios.patch(`http://localhost:5000/users/${id}`, {
+        axios.patch(`http://localhost:5000/users/${id}`, {    //patch update the user’s cart on the backend.
             cart: deletedCart
         })
             .then(() => {
-                setCart(deletedCart)
+                setCart(deletedCart)//updated cart in frontend
             })
     }
+
+    //   // Add product to wishlist
+    //   const addToWishlist = (product) => {
+    //     setWishlist((prevWishlist) => [...prevWishlist, product]);
+    // };
+
+    // // Remove product from wishlist
+    // const removeFromWishlist = (productId) => {
+    //     setWishlist((prevWishlist) => prevWishlist.filter(item => item.id !== productId));
+    // };
 
     return (
         <UserContext.Provider value={{ cart, addToCart, loading, error, removeFromCart, totalPrice }}>

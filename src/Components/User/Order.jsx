@@ -90,7 +90,7 @@ function Order() {
                             />
                             <ErrorMessage name="name" component="div" className="text-red-500 text-sm mt-1"></ErrorMessage>
                         </div>
-                        {/* 
+                        
                 <div className="mb-4">
                             <label htmlFor="paymentMethod" className="block text-gray-700">Payment Method:</label>
                             <Field
@@ -104,7 +104,7 @@ function Order() {
                                 <option value="Bank Transfer">Bank Transfer</option>
                             </Field>
                             <ErrorMessage name="paymentMethod" component="div" className="text-red-500 text-sm mt-1" />
-                        </div> */}
+                        </div>
 
                         <div>
                             <h1 className="text-lg font-semibold mt-6 mb-2">Order Summary</h1>

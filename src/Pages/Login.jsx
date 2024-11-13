@@ -8,11 +8,21 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(true); // Tracks whether on login or registration page
     const navigate = useNavigate();
 
-    const loginInitialValues = { email: '', password: '' };
-    const registrationInitialValues = { userName: '', email: '', password: '', confirmPassword: '', phone: '', cart:[], order:[] };
+    const loginInitialValues = { 
+        email: '',
+        password: '' };
+
+    const registrationInitialValues = { 
+        userName: '', 
+        email: '', 
+        password: '', 
+        confirmPassword: '', 
+        phone: '', 
+        cart:[], 
+        order:[] };
 
     const loginValidationSchema = Yup.object({
         email: Yup.string().email('Invalid email format').required('Required'),
@@ -91,7 +101,7 @@ const Login = () => {
                     initialValues={isLogin ? loginInitialValues : registrationInitialValues}
                     validationSchema={isLogin ? loginValidationSchema : registrationValidationSchema}
                     onSubmit={handleFormSubmit}
-                    enableReinitialize // Allows reinitializing form on `isLogin` change
+                    enableReinitialize // Allows reinitializing form on `isLogin` change resets the form when isLogin changes.
                 >
                     <Form className="space-y-4">
                         {!isLogin && (

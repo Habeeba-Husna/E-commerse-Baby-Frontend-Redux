@@ -22,18 +22,34 @@ const OrderList = () => {
         };
         // Call function to fetch orders
         fetchOrders();
-    }, []);
-    const handleClearAllOrders = async (product) => {
-        const id = localStorage.getItem("id")
-        console.log(product)
-        const deletedOrder = orders.filter((item) => item.id !== product.id)
-        axios.patch(`http://localhost:5000/users/${id}`, {
-            order: deletedOrder
-        })
-            .then(() => {
-                setOrders(deletedOrder)
-            })
+    }, []);//runs once when the component is mounted bcz dependency array is empty 
+
+
+    // const handleClearAllOrders = async (product) => {
+    //     const id = localStorage.getItem("id")
+    //     console.log(product)
+    //     const deletedOrder = orders.filter((order) => order.id !== product.id)
+    //     axios.patch(`http://localhost:5000/users/${id}`, {
+    //         order: deletedOrder
+    //     })
+    //         .then(() => {
+    //             setOrders(deletedOrder)
+    //         })
+    // };
+
+
+    const handleClearAllOrders = async () => {
+        const id = localStorage.getItem("id");
+        try {
+            await axios.patch(`http://localhost:5000/users/${id}`, {
+                order: [] // Empty the order list
+            });
+            setOrders([]); // Clear the orders in the state
+        } catch (error) {
+            console.log('Error clearing orders:', error.message);
+        }
     };
+
 
     return (
         <div>
