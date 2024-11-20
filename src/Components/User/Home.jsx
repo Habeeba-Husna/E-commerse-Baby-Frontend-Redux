@@ -3,10 +3,9 @@ import FirstPage from './FirstPage'
 const Home = () => {
 
   return (
+    
     <div>
-
       <FirstPage />
-
     </div>
   )
 }

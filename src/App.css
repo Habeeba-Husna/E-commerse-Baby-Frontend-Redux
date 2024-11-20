@@ -1,3 +1,15 @@
+/* Other global styles */
+
+button:focus {
+  outline: none; /* Removes the default focus outline */
+  box-shadow: none; /* Removes any box-shadow */
+  background: inherit; /* Keeps the original background */
+}
+.Toastify__toast-container {
+  z-index: 9999;
+}
+
+
 /* .App{
   display: flex;
   justify-content: center;
@@ -70,3 +82,6 @@ nav a {
   background-color: #007bff;
   color: #fff;
 } */
+
+
+
