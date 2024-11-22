@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
@@ -8,18 +7,22 @@ const FirstPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="pt-[4rem] relative w-full h-screen overflow-hidden">
+    <div className="flex flex-col min-h-screen ">
+      {/* Navbar */}
       <Navbar />
+
+      {/* Main Content Section */}
       <div
-        className="absolute top-0 left-0 right-0 bottom-0 bg-cover bg-center"
+        className="relative flex-grow w-full bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://mom-n-me-demo.myshopify.com/cdn/shop/files/slider1_2000x.jpg?v=161370010')",
+          backgroundImage:
+            "url('https://mom-n-me-demo.myshopify.com/cdn/shop/files/slider1_2000x.jpg?v=161370010')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="relative z-10 flex flex-col md:flex-row items-start justify-start w-full h-full text-left text-white px-6 py-10">
-          {/* Left Side Content (Aligned to the Left) */}
+        {/* Full-page background content */}
+        <div className="relative z-10 flex flex-col md:flex-row items-start justify-start w-full h-screen text-left text-white px-6 py-10">
           <div className="w-full md:w-1/2 h-full flex flex-col items-start justify-center px-8 relative bg-transparent">
             {/* Logo */}
             <img
@@ -42,7 +45,7 @@ const FirstPage = () => {
               kids safety cotton clothes
             </p>
 
-            {/* View Collection Button - Positioned Below and Centered */}
+            {/* View Collection Button */}
             <div className="mt-6 flex justify-start w-full">
               <button
                 onClick={() => navigate('/ProductList')}
@@ -54,11 +57,16 @@ const FirstPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Content section that will push the footer down */}
+      <div className="flex-grow bg-white">
+        {/* <div className="h-[200px]"></div> Empty space to simulate content */}
+      </div>
+
+      {/* Footer */}
       <Footer />
     </div>
   );
 };
 
 export default FirstPage;
-
-

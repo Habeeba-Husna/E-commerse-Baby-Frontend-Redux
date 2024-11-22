@@ -454,6 +454,9 @@ const Dashboard = () => {
   const { products } = useContext(UserContext) || {};
   const { users } = useContext(Admincontext) || {};
 
+  const totalUsers = users.length;
+  const totalProducts = products.length;
+
   const productStats = useMemo(
     () => ({
       totalProducts: products?.length || 0,
@@ -524,20 +527,21 @@ const blockCount = useMemo(
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-2">
       <h1 className="font-bold text-4xl text-rose-500 mb-10">
         Dashboard Overview
       </h1>
+        {/* Summary Section for Users and Products */}
+        <div className="flex gap-6 mb-10 w-[90%] max-w-screen-lg justify-center">
+        <div className="p-4 bg-gray-400 text-white rounded-lg shadow flex flex-col items-center space-y-2 w-64 font-bold hover:shadow-xl transition-shadow">
+          <p> Users: {totalUsers} </p>
+        </div>
+        <div className="p-4 bg-gray-400 text-white rounded-lg shadow flex flex-col items-center space-y-2 w-64 font-bold hover:shadow-xl transition-shadow">
+          <p> Products: {totalProducts} </p>
+        </div>
+      </div>
 
-
-      {/* <div className="flex w-full"> */}
-     
-        {/* Dashboard Content */}
-        {/* <div className="w-full overflow-y-auto p-4 max-h-screen"> */}
-
-
-
-      {/* Summary Section */}
+      {/* Category Statistics Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-[90%] max-w-screen-lg mb-10 ">
         {Object.keys(productStats.categoryCounts || {}).map((category) => (
           <div
@@ -625,3 +629,6 @@ const blockCount = useMemo(
 };
 
 export default Dashboard;
+
+
+

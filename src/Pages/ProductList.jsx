@@ -311,6 +311,14 @@ const ProductList = () => {
   //   toast.success('Navigating to Coupon Page!');
   // };
 
+  const handleCouponClick = () => {
+    const couponCode = "XMAS27";
+    navigator.clipboard.writeText(couponCode).then(() => {
+      toast.success(`Coupon code "${couponCode}" copied to clipboard!`);
+    }).catch(() => {
+      toast.error("Failed to copy coupon code. Please try again.");
+    });
+  };
 
 
 
@@ -440,18 +448,8 @@ const ProductList = () => {
               {activeSection === "coupons" && (
                 <div className="bg-white p-2 shadow-md rounded-md">
                   <p
-                    onClick={() => toast.success('You can use this code for Xmas Sale: "XMAS65"')}
-
-
-
-
-
-                    // onClick={handleCouponClick} // Use the new handler to navigate
-
-
-
-
-
+                    // onClick={() => toast.success('You can use this code for Xmas Sale: "XMAS65"')}
+                    onClick={handleCouponClick} 
                     className="cursor-pointer text-blue-700">
                     Xmas Sale 65% Off - Click to copy coupon
                   </p>

@@ -96,7 +96,7 @@ function RatingPage() {
 
     return (
         <div className="min-h-screen bg-gray-100 p-8 pt-2">
-            <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
+            <h1 className="text-4xl font-bold text-center text-rose-500 mb-4">
                 Product Ratings
             </h1>
             <div className="w-full mx-auto my-4 overflow-x-auto p-2 max-h-[calc(100vh-150px)] overflow-y-auto">

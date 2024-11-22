@@ -135,7 +135,7 @@ const UserPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
-      <h1 className="text-center text-4xl font-bold text-indigo-600 mb-10">
+      <h1 className="text-center text-4xl font-bold text-rose-500 mb-10">
         User Management
       </h1>
 

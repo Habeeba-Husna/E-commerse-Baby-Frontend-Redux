@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
     return (
-    <nav className="bg-gray-800 p-4 fixed top-0 left-0 right-0 z-50 shadow-lg">
+    <nav className="bg-gray-800 p-5 fixed top-0 left-0 right-0 z-50 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <Link to="/" className="flex items-center text-white text-2xl font-bold">
