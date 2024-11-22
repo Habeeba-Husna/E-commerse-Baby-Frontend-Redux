@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { toast, ToastContainer } from 'react-toastify';
 import { UserContext } from '../Context/UserContext';
 
 const LoginPage = () => {
@@ -38,11 +38,11 @@ const LoginPage = () => {
         return; // Exit early after admin login
       }
 
-
+             // Check user credentials
             // const admindata =  values.email === 'admin@gmail.com' && values.password === 'Aadhu@2020';
-            // const foundUser = response.data.find(user =>
-            //     user.email === values.email && user.password === values.password
-            // );
+            const foundUser = response.data.find(user =>
+                user.email === values.email && user.password === values.password
+            );
 
             // if(admindata){
             //     // localStorage.setItem('id',"admin");
@@ -57,10 +57,14 @@ const LoginPage = () => {
 
             // Handle errors for invalid user or incorrect password
             if (!foundUser) {
-                toast.error('Email not found');
+                toast.error('Email/Password not found');
             // } else if (foundUser.password !== values.password) {
             //     toast.error('Incorrect password');
+        } else if (foundUser.status === true) { 
+            // Check if the user is blocked
+            toast.error('Your account has been blocked. Please contact support.');
             } else {
+                // Successful login
                 // User found and password matched
                 localStorage.setItem('id', foundUser.id);
                 // console.log(foundUser.userName);
@@ -110,6 +114,7 @@ const LoginPage = () => {
                     </div>
                 </Form>
             </Formik>
+            <ToastContainer/>
         </div>
     );
 };

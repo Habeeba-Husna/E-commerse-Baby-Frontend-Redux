@@ -18,6 +18,11 @@ import WishlistPage from './Components/User/WishlistPage';
 import AdminProductPage from './Components/Admin/AdminProductPage';
 import AdminContextProvider from './Components/Admin/AdminContext';
 import Dashboard from './Components/Admin/Dashboard';
+import UserPage from './Components/Admin/UserPage';
+import RatingPage from './Components/Admin/RatingPage';
+import AdminNavbar from './Components/Admin/AdminNavbar';
+import AdminProtected from './Components/Admin/AdminProtected';
+import NotFoundPage from './Components/NotFoundPage'; // Add this for fallback routes
 
 
 
@@ -41,26 +46,27 @@ function App() {
           <AdminContextProvider>
           <Routes>
             {/* <Route path="/Login" element={<Login />} /> */}
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/registration" element={<RegistrationPage />} />
             <Route path="/productList" element={<ProductList />} />
             <Route path="/product/:id" element={<ProductDetails />} />
-
-            <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/order" element={<Order />} />
             <Route path="/orderList" element={<OrderList />} />
             <Route path="/wishlist" element={<WishlistPage />} />
             {/* <Route path="/coupon" element={<CouponDetails />} /> */}
 
-
+          <Route  element={<AdminProtected><AdminNavbar/></AdminProtected>} >
              {/* Admin-specific routes */}
-             <Route path="/AdminProducts" element={<AdminProductPage />} />
+             <Route path="/admin" element={<AdminProductPage />} />
              <Route path="/dashboard" element={<Dashboard />} />
+             <Route path="/user" element={<UserPage/>} />
+             <Route path="/rating" element={<RatingPage/>} />
+          </Route>
 
-
-
-
+              {/* Fallback Route */}
+              <Route path="*" element={<NotFoundPage />} />
 
 
 

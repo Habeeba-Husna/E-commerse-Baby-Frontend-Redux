@@ -14,30 +14,34 @@ const {products,setProducts} = useContext(UserContext)
 const [users , setUsers] = useState([]) 
  
 
-useEffect (() => {
-    async function fetchUser(){
-        try {
-            const response = await axios.get(`http://localhost:3001/user`);
-            setUsers(response.data);
-        }
-        catch(error){
-            console.log(error.message);
-            
-        }
+useEffect(() => {
+  async function fetchUser() {
+    try {
+      const response = await axios.get(`http://localhost:5000/users`);
+      setUsers(response.data);
+      // console.log("Fetched users:", response.data); // Debug fetched users
+    } catch (error) {
+      console.log("Error fetching users:", error.message);
     }
-    fetchUser();
-},[]);
+  }
+  fetchUser();
+}, []);
 
-// const Block = async(id,status) =>{
-//     try{
-//         await axios.patch(`http://localhost:3001/user/${id}`,{status : !status})
-//         setUser(User.map((userlist) => (userlist.id === id ? {...userlist , status : !status} : {...userlist})))
-//     }
-//     catch(error){
-//         console.log(error.message);
-        
-//     }
-// }
+
+
+const block = async (id, status) => {
+  try {
+     // PATCH the user's status to toggle
+    const response = await axios.patch(`http://localhost:5000/users/${id}`, { status: !status });
+    console.log("API response:", response); // Check the response to see if the status is updated correctly.
+    // Update the users state to reflect the new status locally
+    setUsers(users.map((userlist) => (userlist.id === id ? { ...userlist, status: !status } : userlist)));
+    toast.success(`User ${status ? "Blocked" : "Unblocked"} successfully`);
+  } catch (error) {
+    console.error("Error blocking/unblocking user:", error);
+    toast.error("Failed to block/unblock user.");
+  }
+};
 
 
 const fetchProducts = async () => {
@@ -102,7 +106,7 @@ const fetchProducts = async () => {
 
 
   return (
-    <Admincontext.Provider value={ {products,editFormData , DeleteProduct , addingData}}>
+    <Admincontext.Provider value={ {products,users,block,editFormData , DeleteProduct , addingData}}>
         {children}
     </Admincontext.Provider>
   )

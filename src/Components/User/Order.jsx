@@ -8,7 +8,7 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 
 function Order() {
-    const { cart,setCart, totalPrice,removeFromCart } = useContext(UserContext)
+    const { cart, setCart, totalPrice, removeFromCart } = useContext(UserContext)
     // console.log("Cart:", cart);
     // console.log("Total Price:", totalPrice);
     const navigate = useNavigate()
@@ -33,6 +33,7 @@ function Order() {
             ...values,
             items: cart,
             total: totalPrice,
+            date: new Date().toISOString(), // Add the current date in ISO format
         };
         // console.log("Order Data:", order);
         try {
@@ -47,27 +48,18 @@ function Order() {
                 cart: [],
                 // Clear the cart in the backend
             });
-       // Clear the cart in the frontend context
-//        cart.forEach(item => removeFromCart(item)); // Ensure each item has an id
 
-//        toast.success('Order placed successfully');
-//        navigate('/');
-//    } catch (error) {
-//        console.error('Order submission failed:', error);
-//        toast.error('Failed to place order');
-//    }
-// };
 
-    // Clear the cart in the frontend context directly
-    setCart([]); // This assumes `setCart` is available in your context for directly resetting the cart state.
+            // Clear the cart in the frontend context directly
+            setCart([]); // This assumes `setCart` is available in your context for directly resetting the cart state.
 
-    toast.success("Order placed successfully");
-    navigate("/");
-  } catch (error) {
-    console.error("Order submission failed:", error);
-    toast.error("Failed to place order");
-  }
-};
+            toast.success("Order placed successfully");
+            navigate("/");
+        } catch (error) {
+            console.error("Order submission failed:", error);
+            toast.error("Failed to place order");
+        }
+    };
 
 
     return (
@@ -106,8 +98,8 @@ function Order() {
                             />
                             <ErrorMessage name="name" component="div" className="text-red-500 text-sm mt-1"></ErrorMessage>
                         </div>
-                        
-                <div className="mb-4">
+
+                        <div className="mb-4">
                             <label htmlFor="paymentMethod" className="block text-gray-700">Payment Method:</label>
                             <Field
                                 as="select"
@@ -124,12 +116,32 @@ function Order() {
 
                         <div>
                             <h1 className="text-lg font-semibold mt-6 mb-2">Order Summary</h1>
-                            {cart.map((product) => (
+                            {/* {cart.map((product) => (
                                 <div key={product.id} className="flex justify-between py-2 border-b text-sm md:text-base">
                                     <p>{product.name}</p>
                                     <p>₹ {parseFloat(product.price || 0).toFixed(2)}</p>
                                 </div>
+                            ))} */}
+                            {cart.map((product) => (
+                                <div key={product.id} className="flex justify-between items-center py-2 border-b text-sm md:text-base">
+                                    {/* Left Section: Image and Name */}
+                                    <div className="flex items-center">
+                                        <img
+                                            src={product.url}
+                                            alt={product.name}
+                                            className="w-16 h-16 object-cover rounded-lg mr-4"
+                                        />
+                                        <div>
+                                            <p className="font-medium">{product.name}</p>
+                                            <p className="text-gray-500 text-sm">{product.description}</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Right Section: Price */}
+                                    <p className="text-gray-500 font-semibold">₹ {parseFloat(product.price || 0).toFixed(2)}</p>
+                                </div>
                             ))}
+
 
                             {/* <p className="text-right font-semibold mt-2">Total   :₹ {totalPrice.toFixed(2)}</p> */}
                             <div className="flex justify-end items-center gap-4 p-4 mt-4 bg-gray-100 rounded-md">
@@ -141,8 +153,8 @@ function Order() {
 
                         <div className="flex justify-center mt-6">
                             <button type='submit' className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-green-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                Submit Order              
-                                </button>
+                                Submit Order
+                            </button>
 
                         </div>
                     </Form>

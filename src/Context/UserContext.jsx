@@ -50,7 +50,7 @@ const UserContextProvider = ({ children }) => {
       // Fetch cart data
   useEffect(() => {
     if (id) {
-      console.log(`Fetching user with id: ${id}`); 
+      // console.log(`Fetching user with id: ${id}`); 
       axios
         .get(`http://localhost:5000/users/${id}`)
         .then((res) =>{

@@ -5,7 +5,8 @@ import { MdClose } from 'react-icons/md';
 import * as Yup from "yup";
 import { Admincontext } from './AdminContext';
 import { toast, ToastContainer } from 'react-toastify';
-// import AdminNavbar from './AdminNavbar';
+import AdminNavbar from './AdminNavbar';
+
 
 
 const AdminProductPage = () => {
@@ -14,6 +15,7 @@ const AdminProductPage = () => {
   const [edit, setEdit] = useState(false);
   const [Filter, setFilter] = useState('All');
   const [addProduct , setAddProduct] = useState(null)
+  // const [addProductModal, setAddProductModal] = useState(false);
   
 
   
@@ -30,27 +32,21 @@ const AdminProductPage = () => {
     console.log("page reload");
   }, [products]);
   
-
-
-
-
-
   const validation = Yup.object({
     
     name: Yup.string().required("Required"),
-    price: Yup.string().required("Required"),
-    quantity: Yup.number().required("Required").positive().integer(),
+    price: Yup.number().required("Required").positive("Price must be positive").typeError('Invalid price format'),
+    quantity: Yup.number().required("Required").positive().integer('Must be an integer'),
     description: Yup.string().required("Required"),
     category: Yup.string().required("Required"),
     url: Yup.string().url("Invalid URL format").required("Required"),
   });
 
-
-
-
   const handlesubmit = (values, {resetForm}) => {
     // console.log(values);
     addingData(values)
+    toast.success('Product added successfully!');
+    // setAddProductModal(false);
     resetForm()
   }
 
@@ -85,6 +81,11 @@ const AdminProductPage = () => {
       : products.filter(item => item.category.toLowerCase() === Filter.toLowerCase());
   }, [Filter, products]);
 
+  // const filteredData = Filter === 'All' 
+  //   ? products 
+  //   : products.filter(item => item.category.toLowerCase() === Filter.toLowerCase());
+
+
 
 
   // useEffect(()=>{
@@ -105,15 +106,16 @@ const AdminProductPage = () => {
   // };
 
   return (
-    // <div>
-    //   <AdminNavbar/>
-    <div>
-      <div className="flex justify-between items-center m-2">
+    <div className="flex flex-col h-screen">
+      {/* <h1 className="text-2xl text-center font-bold">Admin Product Management</h1> */}
+    
+      <div className="w-full flex justify-between items-center">
+      
   <select 
     id="category" 
     value={Filter} 
     onChange={handleFilterChange} 
-    className="p-2 border border-gray-300 rounded mr-4 "
+    className="p-2 border border-gray-300 rounded "
   >
     <option value="All">All</option>
     <option value="Footwear">Footwear</option>
@@ -126,13 +128,13 @@ const AdminProductPage = () => {
     <option value="Nursery">Nursery</option>
   </select>
 
-  <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 ml-4"
+  <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 "
   onClick={()=>setAddProduct(true)}>
     Add Product
   </button>
 </div>
 
-<div className="w-11/12 mx-auto my-4 overflow-x-auto">
+<div className="w-full mx-auto my-4 overflow-x-auto p-2">
       <table className="w-full text-sm text-gray-900 border-collapse border border-gray-300">
         <thead className="text-xs text-white bg-gray-700">
           <tr>
@@ -143,7 +145,7 @@ const AdminProductPage = () => {
             <th className='p-4 text-center'>DESCRIPTION</th>
             <th className='p-4 text-center'>CATEGORY</th>
             <th className='p-4 text-center'>IMAGE</th>
-            <th className='p-4 text-center'>EDIT/DELETE</th>
+            <th className='p-4 text-center'>ACTIONS</th>
           </tr>
         </thead>
         <tbody>
@@ -194,42 +196,42 @@ const AdminProductPage = () => {
             >
               <Form>
                 <div className='p-2'>
-                  <label htmlFor="name" className='text-gray-700 w-full'>Name:</label>
+                  <label htmlFor="name" className='text-gray-700'>Name:</label>
                   <Field name='name' type='text' placeholder='Enter the name' className='w-full rounded-md border-gray-300 p-2' />
                   <ErrorMessage name='name' component='div' className='text-red-500 text-sm' />
                 </div>
 
                 <div className='p-2'>
-                  <label htmlFor="price" className='text-gray-700 w-full'>Price:</label>
+                  <label htmlFor="price" className='text-gray-700'>Price:</label>
                   <Field name='price' type='text' placeholder='Enter the price' className='w-full rounded-md border-gray-300 p-2' />
                   <ErrorMessage name='price' component='div' className='text-red-500 text-sm' />
                 </div>
 
                 <div className='p-2'>
-                  <label htmlFor="quantity" className='text-gray-700 w-full'>Quantity:</label>
+                  <label htmlFor="quantity" className='text-gray-700'>Quantity:</label>
                   <Field name='quantity' type='text' placeholder='Enter the quantity' className='w-full rounded-md border-gray-300 p-2' />
                   <ErrorMessage name='quantity' component='div' className='text-red-500 text-sm' />
                 </div>
 
                 <div className='p-2'>
-                  <label htmlFor="description" className='text-gray-700 w-full'>Description:</label>
+                  <label htmlFor="description" className='text-gray-700'>Description:</label>
                   <Field name='description' type='text' placeholder='Enter the description' className='w-full rounded-md border-gray-300 p-2' />
                   <ErrorMessage name='description' component='div' className='text-red-500 text-sm' />
                 </div>
 
                 <div className='p-2'>
-                  <label htmlFor="category" className='text-gray-700 w-full'>Category:</label>
+                  <label htmlFor="category" className='text-gray-700'>Category:</label>
                   <Field name='category' type='text' placeholder='Enter the category' className='w-full rounded-md border-gray-300 p-2' />
                   <ErrorMessage name='category' component='div' className='text-red-500 text-sm' />
                 </div>
 
                 <div className='p-2'>
-                  <label htmlFor="url" className='text-gray-700 w-full'>Image URL:</label>
+                  <label htmlFor="url" className='text-gray-700'>Image URL:</label>
                   <Field name='url' type='text' placeholder='Enter the image URL' className='w-full rounded-md border-gray-300 p-2' />
                   <ErrorMessage name='url' component='div' className='text-red-500 text-sm' />
                 </div>
                 
-                <button type='submit' className="mt-4 w-full bg-blue-500 text-white py-2 rounded-md shadow-md hover:bg-blue-600">
+                <button type='submit' className="mt-4 w-full bg-blue-500 text-white py-2 rounded-md  hover:bg-blue-600">
                   Submit
                 </button>
               </Form>
@@ -300,7 +302,7 @@ const AdminProductPage = () => {
     </div>
     <ToastContainer/>
     </div>
-    // {/* </div> */}
+     
   );
 };
 
@@ -310,77 +312,146 @@ export default AdminProductPage;
 
 
 
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
 
-// const AdminProducts = () => {
-//   const [products, setProducts] = useState([]);
 
-//   // Fetch products from backend
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:5000/products")
-//       .then((response) => setProducts(response.data))
-//       .catch((error) => console.error("Error fetching products:", error));
-//   }, []);
 
-//   // Delete a product
-//   const handleDelete = (id) => {
-//     if (window.confirm("Are you sure you want to delete this product?")) {
-//       axios
-//         .delete(`http://localhost:5000/products/${id}`)
-//         .then(() => setProducts(products.filter((product) => product.id !== id)))
-//         .catch((error) => console.error("Error deleting product:", error));
-//     }
+
+
+
+
+// import React, { useContext, useState, useEffect, useMemo } from 'react';
+// import { UserContext } from '../../Context/UserContext';
+// import { Formik, Form, Field, ErrorMessage } from 'formik';
+// import { MdClose } from 'react-icons/md';
+// import * as Yup from 'yup';
+// import { Admincontext } from './AdminContext';
+// import { toast, ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// import Modal from './Modal';  // Adjust the path according to the location of your Modal component
+
+
+// const AdminProductPage = () => {
+//   const { products, setProducts } = useContext(UserContext);
+//   const { editFormData, DeleteProduct, addingData } = useContext(Admincontext);
+//   const [edit, setEdit] = useState(null);
+//   const [filter, setFilter] = useState('All');
+//   const [addProductModal, setAddProductModal] = useState(false);
+
+//   const initialValues = {
+//     name: '',
+//     price: '',
+//     quantity: '',
+//     description: '',
+//     category: '',
+//     url: '',
 //   };
 
-//   // Edit a product (Redirect or open modal)
-//   const handleEdit = (id) => {
-//     alert(`Redirecting to edit page for product ID: ${id}`);
-//     // Navigate to edit page (e.g., `/admin/edit-product/${id}`)
+//   const validationSchema = Yup.object({
+//     name: Yup.string().required('Required'),
+//     price: Yup.number()
+//       .required('Required')
+//       .positive('Price must be positive')
+//       .typeError('Invalid price format'),
+//     quantity: Yup.number()
+//       .required('Required')
+//       .positive()
+//       .integer('Must be an integer'),
+//     description: Yup.string().required('Required'),
+//     category: Yup.string().required('Required'),
+//     url: Yup.string().url('Invalid URL format').required('Required'),
+//   });
+
+//   const handleAddSubmit = (values, { resetForm }) => {
+//     addingData(values);
+//     toast.success('Product added successfully!');
+//     setAddProductModal(false);
+//     resetForm();
 //   };
+
+//   const handleEditSubmit = (values) => {
+//     editFormData(values);
+//     toast.success('Product updated successfully!');
+//     setEdit(null);
+//   };
+
+//   const handleFilterChange = (e) => {
+//     setFilter(e.target.value);
+//   };
+
+//   const filteredData = useMemo(() => {
+//     return filter === 'All'
+//       ? products
+//       : products.filter(
+//           (item) => item.category.toLowerCase() === filter.toLowerCase()
+//         );
+//   }, [filter, products]);
 
 //   return (
-//     <div className="p-8 bg-gray-100 min-h-screen">
-//       <h1 className="text-2xl font-bold mb-6 text-center">Admin Products Page</h1>
-//       <div className="overflow-x-auto">
-//         <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
-//           <thead>
-//             <tr className="bg-gray-200 text-gray-700">
-//               <th className="p-4 text-center border">Product Name</th>
-//               <th className="p-4 text-center border">Price</th>
-//               <th className="p-4 text-center border">Quantity</th>
-//               <th className="p-4 text-center border">Description</th>
-//               <th className="p-4 text-center border">Category</th>
-//               <th className="p-4 text-center border">Image</th>
-              
+//     <div className="w-full flex flex-col items-center p-6 bg-gray-50">
+//       <div className="w-full flex justify-between items-center mb-6">
+//         <select
+//           value={filter}
+//           onChange={handleFilterChange}
+//           className="p-3 border border-gray-300 rounded-lg shadow-md text-lg"
+//         >
+//           <option value="All">All</option>
+//           <option value="Footwear">Footwear</option>
+//           <option value="Girl Fashion">Girl Fashion</option>
+//           <option value="Boy Fashion">Boy Fashion</option>
+//           <option value="Toys">Toys</option>
+//           <option value="Health">Health</option>
+//           <option value="Feeding">Feeding</option>
+//           <option value="Bath">Bath</option>
+//           <option value="Nursery">Nursery</option>
+//         </select>
+//         <button
+//           onClick={() => setAddProductModal(true)}
+//           className="bg-teal-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-teal-600 transition duration-200"
+//         >
+//           Add Product
+//         </button>
+//       </div>
+
+//       <div className="overflow-x-auto w-full bg-white rounded-lg shadow-md">
+//         <table className="min-w-full border-collapse">
+//           <thead className="bg-teal-500 text-white">
+//             <tr>
+//               <th className="p-3">ID</th>
+//               <th className="p-3">Product Name</th>
+//               <th className="p-3">Price</th>
+//               <th className="p-3">Quantity</th>
+//               <th className="p-3">Description</th>
+//               <th className="p-3">Category</th>
+//               <th className="p-3">Image</th>
+//               <th className="p-3">Actions</th>
 //             </tr>
 //           </thead>
 //           <tbody>
-//             {products.map((product) => (
-//               <tr key={product.id} className="text-center hover:bg-gray-100">
-//                 <td className="p-4 border">{product.name}</td>
-//                 <td className="p-4 border">${product.price}</td>
-//                 <td className="p-4 border">{product.quantity}</td>
-//                 <td className="p-4 border">{product.description}</td>
-//                 <td className="p-4 border">{product.category}</td>
-//                 <td className="p-4 border">
+//             {filteredData.map((product) => (
+//               <tr key={product.id} className="hover:bg-gray-100">
+//                 <td className="p-4">{product.id}</td>
+//                 <td className="p-4">{product.name}</td>
+//                 <td className="p-4">{product.price}</td>
+//                 <td className="p-4">{product.quantity}</td>
+//                 <td className="p-4">{product.description}</td>
+//                 <td className="p-4">{product.category}</td>
+//                 <td className="p-4">
 //                   <img
 //                     src={product.url}
 //                     alt={product.name}
-//                     className="w-16 h-16 mx-auto rounded"
+//                     className="p-4 flex space-x-4"
 //                   />
 //                 </td>
-//                 <td className="p-4 border">
+//                 <td className="p-3 flex justify-center space-x-2">
 //                   <button
-//                     onClick={() => handleEdit(product.id)}
-//                     className="px-4 py-2 bg-blue-500 text-white font-semibold rounded shadow hover:bg-blue-600 transition"
+//                     onClick={() => setEdit(product)}
+//                     className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
 //                   >
 //                     Edit
 //                   </button>
 //                   <button
-//                     onClick={() => handleDelete(product.id)}
-//                     className="ml-2 px-4 py-2 bg-red-500 text-white font-semibold rounded shadow hover:bg-red-600 transition"
+//                     onClick={() => DeleteProduct(product.id)}
+//                     className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200"
 //                   >
 //                     Delete
 //                   </button>
@@ -390,9 +461,30 @@ export default AdminProductPage;
 //           </tbody>
 //         </table>
 //       </div>
+
+//       {addProductModal && (
+//         <Modal
+//           title="Add Product"
+//           onClose={() => setAddProductModal(false)}
+//           onSubmit={handleAddSubmit}
+//           initialValues={initialValues}
+//           validationSchema={validationSchema}
+//         />
+//       )}
+
+//       {edit && (
+//         <Modal
+//           title="Edit Product"
+//           onClose={() => setEdit(null)}
+//           onSubmit={handleEditSubmit}
+//           initialValues={edit}
+//           validationSchema={validationSchema}
+//         />
+//       )}
+
+//       <ToastContainer />
 //     </div>
 //   );
 // };
 
-// export default AdminProducts;
-
+// export default AdminProductPage;

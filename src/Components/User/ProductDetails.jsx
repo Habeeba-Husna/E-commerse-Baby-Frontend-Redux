@@ -247,7 +247,7 @@ const ProductDetails = () => {
                   <img
                     src={item.url}
                     alt={item.name}
-                    className="w-full h-40 object-cover rounded-lg mb-4"
+                    className="w-full h-40 object-contain rounded-lg mb-4"
                   />
                   <h3 className="text-lg font-semibold">{item.name}</h3>
                   <p className="text-blue-600 text-lg font-bold">₹{item.price.toFixed(2)}</p>
