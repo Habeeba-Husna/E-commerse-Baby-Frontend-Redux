@@ -15,11 +15,11 @@ const LoginPage = () => {
     const validation = Yup.object({
         email: Yup.string().email('Invalid email format').required('Email is required'),
         password: Yup.string().required("Password is required").min(8, "Password should be at least 8 characters long")
-        .matches(/[a-z]/, "Password should contain at least one lowercase letter")
-        .matches(/[A-Z]/, "Password should contain at least one uppercase letter")
-        .matches(/[0-9]/, "Password should contain at least one number")
-        .matches(/[@$!%*?&#_]/, "Password should contain at least one special character"),
-        
+            .matches(/[a-z]/, "Password should contain at least one lowercase letter")
+            .matches(/[A-Z]/, "Password should contain at least one uppercase letter")
+            .matches(/[0-9]/, "Password should contain at least one number")
+            .matches(/[@$!%*?&#_]/, "Password should contain at least one special character"),
+
     });
 
     const onSubmit = async (values) => {
@@ -27,54 +27,32 @@ const LoginPage = () => {
             const response = await axios.get(`http://localhost:5000/users`);
             setUsers(response.data);
 
-
             // Admin login check
-    if (values.email === 'admin@gmail.com' && values.password === 'Aadhu@2020') {
-        toast.success('Admin logged in successfully');
-        setIsLoggedIn(true);
-        setTimeout(() => {
-          navigate('/admin');
-        }, 1000);
-        return; // Exit early after admin login
-      }
-
-             // Check user credentials
-            // const admindata =  values.email === 'admin@gmail.com' && values.password === 'Aadhu@2020';
+            if (values.email === 'admin@gmail.com' && values.password === 'Aadhu@2020') {
+                toast.success('Admin logged in successfully');
+                setIsLoggedIn(true);// Mark the user as logged in
+                setTimeout(() => {
+                    navigate('/admin');
+                }, 1000);
+                return;// Stop further checks since admin login is done
+            }
             const foundUser = response.data.find(user =>
                 user.email === values.email && user.password === values.password
             );
-
-            // if(admindata){
-            //     // localStorage.setItem('id',"admin");
-            //     toast.success('Admin logged in successfully')
-                
-            //     setIsloggedIn(true);
-            //     setTimeout(() => {
-            //       navigate('/admin')
-            //     },1000)
-                
-            //   }
-
             // Handle errors for invalid user or incorrect password
             if (!foundUser) {
                 toast.error('Email/Password not found');
-            // } else if (foundUser.password !== values.password) {
-            //     toast.error('Incorrect password');
-        } else if (foundUser.status === true) { 
-            // Check if the user is blocked
-            toast.error('Your account has been blocked. Please contact support.');
+            } else if (foundUser.status === true) {
+                // Check if the user is blocked
+                toast.error('Your account has been blocked. Please contact support.');
             } else {
-                // Successful login
-                // User found and password matched
-                localStorage.setItem('id', foundUser.id);
+                localStorage.setItem('id', foundUser.id);// Store the user ID in local storage
                 // console.log(foundUser.userName);
-
                 localStorage.setItem('name', foundUser.userName);
                 toast.success('Login successful');
                 setIsLoggedIn(true);
                 navigate('/');
             }
-
         } catch (error) {
             console.error("Error fetching user data:", error);
             toast.error("An error occurred while logging in.");
@@ -114,7 +92,7 @@ const LoginPage = () => {
                     </div>
                 </Form>
             </Formik>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     );
 };

@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import toast from 'react-hot-toast';
-
 import { UserContext } from '../../Context/UserContext';
 
 
@@ -24,9 +23,8 @@ useEffect(() => {
       console.log("Error fetching users:", error.message);
     }
   }
-  fetchUser();
+  fetchUser();// load user data from the server
 }, []);
-
 
 
 const block = async (id, status) => {
@@ -43,7 +41,6 @@ const block = async (id, status) => {
   }
 };
 
-
 const fetchProducts = async () => {
     try {
       const response = await axios.get('http://localhost:5000/products');
@@ -57,18 +54,14 @@ const fetchProducts = async () => {
     fetchProducts();
   }, []);
   
-  
 
     const editFormData=async(product)=>{
         try{
-            
-            
             const id =product.id
              const response=await axios.put(`http://localhost:5000/products/${id}`,product)
              setProducts((prevProducts) =>
                 prevProducts.map((item) => (item.id === id ? product : item))
               );
-             
              toast.success("product updated successfully")
         }
         catch(error){
@@ -76,9 +69,7 @@ const fetchProducts = async () => {
         }
     }
 
-    const DeleteProduct = async(id) => {
-       
-        
+    const DeleteProduct = async(id) => {     
         try{
             await axios.delete(`http://localhost:5000/products/${id}`);
             setProducts((prevProducts) =>prevProducts.filter((product) => product.id !== id)
@@ -93,8 +84,7 @@ const fetchProducts = async () => {
 
       const addingData = async (newProduct) => {
         try {
-            const response = await axios.post(`http://localhost:5000/products`, newProduct);
-            // 
+            const response = await axios.post(`http://localhost:5000/products`, newProduct); 
             setProducts([...products, response.data]);
             toast.success("Product added successfully!");
         } catch (error) {

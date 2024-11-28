@@ -6,11 +6,11 @@ import axios from "axios";
 
 function Cart() {
   const navigate = useNavigate();
-  const {user, cart, removeFromCart, incrementQuantity, decrementQuantity } = useContext(UserContext);
+  const { user, cart, removeFromCart, incrementQuantity, decrementQuantity } = useContext(UserContext);
 
   const [totalPrice, setTotalPrice] = useState(0);
-   // Check if user exists and contains an id
-   const userId = user?.id;
+  // Check if user exists and contains an id
+  const userId = user?.id;
 
   // Calculate total price whenever the cart changes
   useEffect(() => {
@@ -23,8 +23,7 @@ function Cart() {
     }, 0);
     setTotalPrice(updatedTotal);
   }, [cart]);
-  
-  
+
   // Fetch user data, using userId
   useEffect(() => {
     if (userId) {
@@ -33,7 +32,6 @@ function Cart() {
         .then((res) => {
           console.log("Fetched data:", res.data);
           setCart(res.data.cart || []);
-          
         })
         .catch((error) => console.error("Error fetching user cart:", error));
     }
@@ -105,9 +103,6 @@ function Cart() {
                 <span className="text-lg font-semibold text-green-600">₹ {totalPrice.toFixed(2)}</span>
               </div>
 
-
-              {/* "bg-blue-500 text-white px-6 py-2 rounded-lg mt-4" */}
-
               <button
                 onClick={() => {
                   console.log("Navigating to order page...");
@@ -124,7 +119,6 @@ function Cart() {
     </div>
   );
 }
-
 export default Cart;
 
 

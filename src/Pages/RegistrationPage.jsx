@@ -13,14 +13,17 @@ const RegistrationPage = () => {
         userName: Yup.string().required("Username is required"),
         email: Yup.string().email("Invalid email format").required("Email is required"),
         password: Yup.string().required("Password is required").min(8, "Password should be at least 8 characters long")
-        .matches(/[a-z]/, "Password should contain at least one lowercase letter")
-        .matches(/[A-Z]/, "Password should contain at least one uppercase letter")
-        .matches(/[0-9]/, "Password should contain at least one number")
-        .matches(/[@$!%*?&#_]/, "Password should contain at least one special character"),
+            .matches(/[a-z]/, "Password should contain at least one lowercase letter")
+            .matches(/[A-Z]/, "Password should contain at least one uppercase letter")
+            .matches(/[0-9]/, "Password should contain at least one number")
+            .matches(/[@$!%*?&#_]/, "Password should contain at least one special character"),
         confirmPassword: Yup.string()
             .oneOf([Yup.ref('password'), ''], 'Passwords must match')
             .required("Please confirm your password"),
+        // phone: Yup.string().required("Phone number is required")
         phone: Yup.string().required("Phone number is required")
+            .matches(/^\d{10}$/, "Phone number must be exactly 10 digits")
+
     });
 
     const onSubmit = async (values) => {
@@ -45,7 +48,7 @@ const RegistrationPage = () => {
                 navigate("/login");
             }
         } catch (error) {
-            console.error("Error registering user:", error);
+            // console.error("Error registering user:", error);
             toast.error("Registration failed. Please try again.");
         }
     };

@@ -3,60 +3,48 @@ import React, { createContext, useEffect, useState } from "react";
 import toast from 'react-hot-toast';
 import WishlistProvider from "./WishlistContext";
 
-
 export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
-    const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
-    const [order, setOrder] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [loadingProducts, setLoadingProducts] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [order, setOrder] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [ratings, setRatings] = useState({}); // Store ratings by product ID
 
-    const id = localStorage.getItem('id');
-    const name = localStorage.getItem('name');
+  const id = localStorage.getItem('id');
+  const name = localStorage.getItem('name');
+  
+  //tells whether the user login or not
+  useEffect(() => {
+    setIsLoggedIn(!!id);// (!!id) convert a value into a boolean
+  }, [id]);
 
-    // Check login status
-    // useEffect(() => {
-    //     const id = localStorage.getItem('id');
-    //     if (id) {
-    //         setIsLoggedIn(true);
-    //     }
-    //     else {
-    //         setIsLoggedIn(false)
-    //     }
-    // }, [id])
+  // Fetch products
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/products");
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error.message);
+      } finally {
+        setLoadingProducts(false);
+      }
+    };
+    fetchProducts();
+  }, []);
 
-
-    useEffect(() => {
-        setIsLoggedIn(!!id);
-      }, [id]);
-    
-     // Fetch products
-    useEffect(() => {
-        const fetchProducts = async () => {
-          try {
-            const response = await axios.get("http://localhost:5000/products");
-            setProducts(response.data);
-          } catch (error) {
-            console.error("Error fetching products:", error.message);
-          } finally {
-            setLoadingProducts(false);
-          }
-        };
-        fetchProducts();
-      }, []);
-
-      // Fetch cart data
+  // Fetch cart data
   useEffect(() => {
     if (id) {
       // console.log(`Fetching user with id: ${id}`); 
       axios
         .get(`http://localhost:5000/users/${id}`)
-        .then((res) =>{
+        .then((res) => {
           setCart(res.data.cart || []);
           setOrder(res.data.order || []);
-          
         })
         .catch((error) => {
           console.error("Error fetching user cart:", error);
@@ -65,59 +53,44 @@ const UserContextProvider = ({ children }) => {
     }
   }, [id]);
 
-  // // Fetch order data
-  // useEffect(() => {
-  //   if (id) {
-  //     axios
-  //       .get(`http://localhost:5000/users/${id}`)
-  //       .then((res) => setOrder(res.data.order || []))
-  //       .catch((error) => console.error("Error fetching user orders:", error));
-  //   }
-  // }, [id]);
-
-
-
   // Add item to cart
   const addToCart = (item) => {
     const findCart = cart.find((cartItem) => cartItem.id === item.id);
     const updatedCart = findCart
       ? cart.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        )
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      )
       : [...cart, { ...item, quantity: 1 }];
-
     axios
       .patch(`http://localhost:5000/users/${id}`, { cart: updatedCart })
       .then(() => {
         toast.success(findCart ? "Quantity updated!" : "Item added to cart!")
-    setCart(updatedCart);
-  })
-  .catch((error) => {
-    console.error("Error updating cart:", error);
-    toast.error("Error updating cart.");
-  });
-};
+        setCart(updatedCart);
+      })
+      .catch((error) => {
+        console.error("Error updating cart:", error);
+        toast.error("Error updating cart.");
+      });
+  };
 
   // Remove item from cart
   const removeFromCart = (item) => {
     const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
     axios
       .patch(`http://localhost:5000/users/${id}`, { cart: updatedCart })
-      .then(() =>{
+      .then(() => {
         toast.success("Item removed from cart!")
-      
-    setCart(updatedCart);
 
-  })
-  .catch((error) => {
-    console.error("Error removing item from cart:", error);
-    toast.error("Error removing item from cart.");
-  });
-};
+        setCart(updatedCart);
 
- 
+      })
+      .catch((error) => {
+        console.error("Error removing item from cart:", error);
+        toast.error("Error removing item from cart.");
+      });
+  };
 
   // Increment item quantity
   const incrementQuantity = (itemId) => {
@@ -137,36 +110,46 @@ const UserContextProvider = ({ children }) => {
     setCart(updatedCart);
   };
 
-  
+  const addRating = (productId, rating) => {      //value of rating(1,2,3..)
+    setRatings((prevRatings) => ({
+      ...prevRatings,
+      [productId]: rating,
+    }));
+  };
+
   const totalPrice = cart.reduce(
     (total, product) => total + product.price * (product.quantity || 1),
     0
   );
 
-  
+  // Calculate the number of items in the cart
+  const cartItemCount = cart.reduce((total, product) => total + (product.quantity || 1), 0);
 
-    return (
-        <WishlistProvider>
-            <UserContext.Provider value={{
-                 isLoggedIn,
-                 products,
-                 cart,
-                 addToCart,
-                 removeFromCart,
-                 setCart,
-                 incrementQuantity,
-                 decrementQuantity,
-                 totalPrice,
-                 loadingProducts,
-                 id,
-                 name,
-                 setIsLoggedIn,
-                 setProducts
-            }}>
-                {children}
-            </UserContext.Provider>
-        </WishlistProvider>
-    );
+  return (
+    <WishlistProvider>
+      <UserContext.Provider value={{
+        isLoggedIn,
+        products,
+        cart,
+        addToCart,
+        removeFromCart,
+        setCart,
+        incrementQuantity,
+        decrementQuantity,
+        totalPrice,
+        loadingProducts,
+        id,
+        name,
+        setIsLoggedIn,
+        setProducts,
+        cartItemCount,
+        ratings,
+        addRating
+      }}>
+        {children}
+      </UserContext.Provider>
+    </WishlistProvider>
+  );
 };
 
 export default UserContextProvider;

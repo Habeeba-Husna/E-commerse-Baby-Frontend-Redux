@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { WishlistContext } from '../../Context/WishlistContext'; // Import WishlistContext
 import { UserContext } from '../../Context/UserContext'; // Import UserContext
 import { AiFillHeart } from 'react-icons/ai'; // Import heart icons
-import { ToastContainer,toast } from 'react-toastify'; // Toast notifications
+import { ToastContainer, toast } from 'react-toastify'; // Toast notifications
 import { useNavigate } from 'react-router-dom'; // Navigation
 import { Link } from 'react-router-dom'; // Link to Product Details Page
 import Navbar from '../Navbar/Navbar';
@@ -10,11 +10,11 @@ import axios from "axios"; // Axios for API requests
 
 const WishlistPage = () => {
   const navigate = useNavigate();
-  const { wishlist, setWishlist} = React.useContext(WishlistContext); // Get wishlist context
+  const { wishlist, setWishlist } = React.useContext(WishlistContext); // Get wishlist context
   const { addToCart } = React.useContext(UserContext); // Get addToCart from UserContext
 
   const userId = localStorage.getItem("id"); // Current logged-in user ID
-  const apiUrl = "http://localhost:5000/users"; // Base API URL
+  const apiUrl = "http://localhost:5000/users"; //stores Base API URL
 
   // console.log(wishlist);
 
@@ -23,12 +23,8 @@ const WishlistPage = () => {
     if (userId) {
       axios
         .get(`${apiUrl}/${userId}`)
-        // .then((response) => {
-        //   const fetchedWishlist = response.data.wishlist || [];
-        //   setWishlist(fetchedWishlist);
-        // })
         .then((response) => setWishlist(response.data.wishlist || []))
-        .catch(() =>toast.error("Unable to load wishlist."));
+        .catch(() => toast.error("Unable to load wishlist."));
     }
   }, [userId, setWishlist]);
 
@@ -42,7 +38,7 @@ const WishlistPage = () => {
           setWishlist(updatedWishlist);
           toast.info("Item removed from wishlist.");
         })
-        .catch(() =>toast.error("Failed to update wishlist."));
+        .catch(() => toast.error("Failed to update wishlist."));
     }
   };
 

@@ -7,7 +7,7 @@ const AdminNavbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("User logged out");
+    // console.log("User logged out");
     navigate("/login");
   };
 

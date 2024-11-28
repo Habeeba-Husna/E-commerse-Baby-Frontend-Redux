@@ -68,7 +68,6 @@ const OrderList = () => {
                                             className="w-24 h-24 object-cover rounded-md"
                                             alt={product.name}
                                         />
-
                                         <div className="ml-4">
                                             <p className="font-semibold">{product.name}</p>
                                             <p className="text-gray-600"> ₹ {product.price}</p>
@@ -99,6 +98,5 @@ const OrderList = () => {
         </div>
     );
 };
-
 export default OrderList;
 

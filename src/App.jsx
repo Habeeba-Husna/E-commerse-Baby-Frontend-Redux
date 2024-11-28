@@ -68,8 +68,6 @@ function App() {
               {/* Fallback Route */}
               <Route path="*" element={<NotFoundPage />} />
 
-
-
           </Routes>
           </AdminContextProvider>
           
