@@ -6,18 +6,7 @@
       "email": "shanish@gmail.com",
       "password": "Shanish@87",
       "phone": "1234567890",
-      "cart": [
-        {
-          "id": "2",
-          "name": "T-Shirts",
-          "price": "233.60",
-          "quantity": 1,
-          "description": "Babyhug Disney Cotton Knit Oversized Half Sleeves T-Shirt with Minnie Mouse Applique Detailing - White",
-          "category": "Girl Fashion",
-          "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/16195218a.webp",
-          "size": null
-        }
-      ],
+      "cart": [],
       "order": [
         {
           "name": "shanish",
@@ -54,6 +43,34 @@
           ],
           "total": 9456,
           "date": "2024-11-22T05:31:41.476Z"
+        },
+        {
+          "name": "cvf",
+          "address": "zs",
+          "paymentMethod": "Credit Card",
+          "items": [
+            {
+              "id": "2",
+              "name": "T-Shirts",
+              "price": "233.60",
+              "quantity": 2,
+              "description": "Babyhug Disney Cotton Knit Oversized Half Sleeves T-Shirt with Minnie Mouse Applique Detailing - White",
+              "category": "Girl Fashion",
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/16195218a.webp",
+              "size": null
+            },
+            {
+              "id": "1",
+              "name": "Clogs with Strap Closure11",
+              "price": 580,
+              "quantity": 1,
+              "description": "Babyoye Clogs with Strap Closure & Applique - Beige",
+              "category": "Footwear",
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/15957689a.webp"
+            }
+          ],
+          "total": 1047.2,
+          "date": "2024-12-20T08:54:55.474Z"
         }
       ],
       "wishlist": [

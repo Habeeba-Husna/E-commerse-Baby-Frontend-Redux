@@ -10,7 +10,7 @@ const AdminContextProvider = ({children}) => {
   
 
 const {products,setProducts} = useContext(UserContext)
-const [users , setUsers] = useState([]) 
+const [users, setUsers] = useState([]) 
  
 
 useEffect(() => {
