@@ -1,28 +1,40 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../Context/UserContext';
 import { CiSearch } from "react-icons/ci";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"; // Add icons for wishlist
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"; 
 import Navbar from '../Components/Navbar/Navbar';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { WishlistContext } from '../Context/WishlistContext';
+// import { WishlistContext } from '../Context/WishlistContext';
 import { MdDiscount } from "react-icons/md";
 import Footer from '../Components/User/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../Components/Redux/productSlice';
+import { addToCart,removeFromWishlist,addToWishlist } from "../Components/Redux/userSlice";
+
 
 const ProductList = () => {
   const navigate = useNavigate()
   const [search, setSearch] = useState('');
-  const { wishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
-  const { products, addToCart } = useContext(UserContext);
+  // const { wishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
+  // const { products, addToCart } = useContext(UserContext);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [isOpen, setIsOpen] = useState(false);    //Tracks whether the discount section is open or closed.
-  const [activeSection, setActiveSection] = useState(null);   // To track which section is clicked (Coupons or Offers) 
+  const [isOpen, setIsOpen] = useState(false);    
+  const [activeSection, setActiveSection] = useState(null);  
+  const dispatch=useDispatch()
+   
+  useEffect(()=>{
+    dispatch(fetchProducts())
+  },[])
+  const {products}=useSelector((state)=>state.product)
   
+  const {wishlist}=useSelector((state)=>state.user)
+
   //used to toggle (show or hide) a specific section coupon
   const handleToggleSection = (section) => {
     setActiveSection(activeSection === section ? null : section);  // Toggle the clicked section
   }
- 
+  
+   console.log(products);
   const searchBarhandle = (e) => {
     setSearch(e.target.value)
   }
@@ -40,6 +52,8 @@ const ProductList = () => {
       toast.success(`${product.name} added to wishlist`);
     }
   };
+
+ 
 
   // Filter products based on search term and category
   const filtered = products.filter(product => {
@@ -138,7 +152,8 @@ const ProductList = () => {
                       onClick={(e) => {
                         e.preventDefault();  // Prevents navigate to the product page while click button
                         if (localStorage.getItem('id')) {  //check user logged in 
-                          addToCart(product);
+                          const userId=localStorage.getItem("id")
+                          dispatch(addToCart({userId, newItem:product}));
                           toast.success("Item added to the cart!");
                         } else {
                           toast.info('Please login to add products to the cart');
