@@ -7,7 +7,7 @@ import ProductList from './Pages/ProductList';
 import Home from './Components/User/Home';
 import Cart from './Components/User/Cart';
 import Order from './Components/User/Order';
-import OrderList from './Components/User/OrderList';
+
 import UserContextProvider from './Context/UserContext';
 import LoginPage from './Pages/LoginPage';
 import RegistrationPage from './Pages/RegistrationPage';
@@ -23,8 +23,7 @@ import RatingPage from './Components/Admin/RatingPage';
 import AdminNavbar from './Components/Admin/AdminNavbar';
 import AdminProtected from './Components/Admin/AdminProtected';
 import NotFoundPage from './Components/NotFoundPage'; // Add this for fallback routes
-
-
+import OrderList from './Components/User/OrderList';
 
 function App() {
   return (
@@ -53,7 +52,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/order" element={<Order />} />
-            <Route path="/orderList" element={<OrderList />} />
+            <Route path="/orderList" element={<OrderList/>} />
             <Route path="/wishlist" element={<WishlistPage />} />
             {/* <Route path="/coupon" element={<CouponDetails />} /> */}
 

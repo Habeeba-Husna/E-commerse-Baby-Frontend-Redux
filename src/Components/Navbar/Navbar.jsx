@@ -1,4 +1,4 @@
-import React, { useState,useContext  } from 'react';
+import React, { useState,useContext, useEffect  } from 'react';
 import { toast } from 'react-toastify';
 // import { toast, ToastContainer } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,13 +6,18 @@ import { FaShoppingCart, FaHeart, FaBars } from 'react-icons/fa';
 import { CgProfile } from "react-icons/cg";
 import { useRef } from 'react';
 import { FaShopify } from "react-icons/fa";
-import { UserContext } from '../../Context/UserContext';
 
+import { fetchProducts } from '../Redux/productSlice';
+import { useSelector } from 'react-redux';
 
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const {cartItemCount}=useContext(UserContext)
+  // const {cartItemCount}=useContext(UserContext)
+  const {cart}=useSelector((state)=>state.user)
+  useEffect(()=>{
+    fetchProducts()
+  },[])
 
   const [menuOpen, setMenuOpen] = useState(false);//to track whether the mobile menu is open or not.
   const mobileMenuRef = useRef(null);// reference for the mobile menu to manage interactions
@@ -25,14 +30,7 @@ const Navbar = () => {
     }
   };
 
-  // const handleOrderList = () => {
-  //   if (!localStorage.getItem('id')) {
-  //     toast.error("You must be logged in");
-  //   } else {
-  //     navigate('/orderlist');
-  //   }
-  // };
-
+ 
   const handleOrderList = () => {
     const userId = localStorage.getItem('id');
     
@@ -87,9 +85,9 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-6 items-center">
           <button onClick={handleCart} className="relative text-white hover:text-blue-400 ">
             <FaShoppingCart className="text-2xl" />
-            {cartItemCount > 0 && (
+            {cart.length > 0 && (
               <span className="absolute top-[-5px] right-[-5px] bg-red-500 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-                {cartItemCount}
+                {cart.length}
               </span>
             )} 
           </button>

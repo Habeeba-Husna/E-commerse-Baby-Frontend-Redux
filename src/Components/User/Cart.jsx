@@ -1,42 +1,44 @@
 import React, { useContext, useState, useEffect } from "react";
-import { UserContext } from "../../Context/UserContext";
+// import { UserContext } from "../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import axios from "axios";
+import axios from "axios"
+import { decrementQuantity, fetchUserCart, incrementQuantity, removeFromCart } from "../Redux/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Cart() {
-  const navigate = useNavigate();
-  const { user, cart, removeFromCart, incrementQuantity, decrementQuantity } = useContext(UserContext);
+  const userId=localStorage.getItem('id')
+  const dispatch=useDispatch()
+  // useEffect(()=>{
+  //   dispatch(fetchUserCart(userId))
+  // },[dispatch])
 
+  useEffect(() => {
+    if (userId) dispatch(fetchUserCart(userId));
+  }, [dispatch, userId]);
+  
+  const navigate = useNavigate();
+  // const { user, cart, removeFromCart, incrementQuantity, decrementQuantity } = useContext(UserContext);
   const [totalPrice, setTotalPrice] = useState(0);
   // Check if user exists and contains an id
-  const userId = user?.id;
 
+const {cart}=useSelector((state)=>state.user)
   // Calculate total price whenever the cart changes
   useEffect(() => {
     const updatedTotal = cart.reduce((total, product) => {
       const quantity = product.quantity || 1;
 
       // Use finalPrice if available, otherwise fallback to original product price
-      const price = product.finalPrice || product.price;
+      // const price = product.finalPrice || product.price;
+
+      const price = parseFloat(product.finalPrice || product.price || 0);
+
       return total + price * quantity;
     }, 0);
     setTotalPrice(updatedTotal);
   }, [cart]);
 
-  // Fetch user data, using userId
-  useEffect(() => {
-    if (userId) {
-      axios
-        .get(`http://localhost:5000/users/${userId}`)
-        .then((res) => {
-          console.log("Fetched data:", res.data);
-          setCart(res.data.cart || []);
-        })
-        .catch((error) => console.error("Error fetching user cart:", error));
-    }
-  }, [userId]);
-
+  
   return (
     <div className="pt-[4rem]">
       <Navbar />
@@ -71,14 +73,14 @@ function Cart() {
                   <div className="flex items-center justify-center mt-2">
                     <div className="flex items-center justify-between w-1/3 bg-gray-100 p-2 rounded">
                       <button
-                        onClick={() => decrementQuantity(product.id)}
+                        onClick={() => dispatch(decrementQuantity({ userId, cartItemId:product.id }))}
                         className="bg-gray-200 rounded px-2 flex items-center justify-center text-xl font-bold hover:bg-gray-400"
                       >
                         -
                       </button>
                       <span>{product.quantity || 1}</span>
                       <button
-                        onClick={() => incrementQuantity(product.id)}
+                        onClick={() => dispatch(incrementQuantity({ userId, cartItemId:product.id }))}
                         className="bg-gray-200 rounded px-2 flex items-center justify-center text-xl font-bold hover:bg-gray-400"
                       >
                         +
@@ -88,7 +90,7 @@ function Cart() {
 
                   <button
                     className="bg-black text-white px-6 py-2 rounded-2xl w-full mt-4 hover:bg-red-600 text-sm"
-                    onClick={() => removeFromCart(product)}
+                    onClick={() =>dispatch(removeFromCart({ userId, cartItemId:product.id })) }
                   >
                     REMOVE
                   </button>

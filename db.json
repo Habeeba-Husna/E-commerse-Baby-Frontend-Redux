@@ -1,92 +1,6 @@
 {
   "users": [
     {
-      "id": "af00",
-      "userName": "Shanish",
-      "email": "shanish@gmail.com",
-      "password": "Shanish@87",
-      "phone": "1234567890",
-      "cart": [],
-      "order": [
-        {
-          "name": "shanish",
-          "address": "arambram",
-          "paymentMethod": "Credit Card",
-          "items": [
-            {
-              "id": "3",
-              "name": "Sleeveless Frock",
-              "price": 624,
-              "quantity": 1,
-              "description": "Tior Sleeveless Hearts Printed Bow Applique Ruffle Dress - Brown",
-              "category": "Girl Fashion",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/17894465a.webp"
-            },
-            {
-              "id": "19",
-              "name": "Diapers",
-              "price": 513,
-              "quantity": 1,
-              "description": "MamyPoko Pant Style Diapers XXX Large - 7 Pieces - (Pack of 2)",
-              "category": "Bath",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/438x531/cc9148a.webp"
-            },
-            {
-              "id": "21",
-              "name": "Swing Cradle",
-              "price": 8319,
-              "quantity": 1,
-              "description": "The Automatic Swing Cradle - Pink",
-              "category": "Nursery",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/2789088a.webp"
-            }
-          ],
-          "total": 9456,
-          "date": "2024-11-22T05:31:41.476Z"
-        },
-        {
-          "name": "cvf",
-          "address": "zs",
-          "paymentMethod": "Credit Card",
-          "items": [
-            {
-              "id": "2",
-              "name": "T-Shirts",
-              "price": "233.60",
-              "quantity": 2,
-              "description": "Babyhug Disney Cotton Knit Oversized Half Sleeves T-Shirt with Minnie Mouse Applique Detailing - White",
-              "category": "Girl Fashion",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/16195218a.webp",
-              "size": null
-            },
-            {
-              "id": "1",
-              "name": "Clogs with Strap Closure11",
-              "price": 580,
-              "quantity": 1,
-              "description": "Babyoye Clogs with Strap Closure & Applique - Beige",
-              "category": "Footwear",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/15957689a.webp"
-            }
-          ],
-          "total": 1047.2,
-          "date": "2024-12-20T08:54:55.474Z"
-        }
-      ],
-      "wishlist": [
-        {
-          "id": "2",
-          "name": "T-Shirts",
-          "price": 320,
-          "quantity": 145,
-          "description": "Babyhug Disney Cotton Knit Oversized Half Sleeves T-Shirt with Minnie Mouse Applique Detailing - White",
-          "category": "Girl Fashion",
-          "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/16195218a.webp"
-        }
-      ],
-      "status": false
-    },
-    {
       "id": "4252",
       "userName": "Habeeba",
       "email": "habeebahusna@gmail.com",
@@ -158,44 +72,6 @@
           ],
           "total": 6799.0395,
           "date": "2024-11-23T10:48:31.632Z"
-        },
-        {
-          "name": "malumma",
-          "address": "dfgh",
-          "paymentMethod": "Credit Card",
-          "items": [
-            {
-              "id": "1",
-              "name": "Clogs with Strap Closure11",
-              "price": 576,
-              "quantity": 1,
-              "description": "Babyoye Clogs with Strap Closure & Applique - Beige",
-              "category": "Footwear",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/15957689a.webp",
-              "size": "3-6 months"
-            }
-          ],
-          "total": 576,
-          "date": "2024-11-26T06:23:15.914Z"
-        },
-        {
-          "name": "kuji",
-          "address": "sdf",
-          "paymentMethod": "Credit Card",
-          "items": [
-            {
-              "id": "5",
-              "name": "Shoes",
-              "price": 1101,
-              "quantity": 1,
-              "description": "Babyoye Striped Design Velcro Closure Sneaker Shoes - Brown & White",
-              "category": "Footwear",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/18279557a.webp",
-              "size": "6-9 months"
-            }
-          ],
-          "total": 1101,
-          "date": "2024-11-26T06:26:57.323Z"
         }
       ],
       "wishlist": [
@@ -208,7 +84,8 @@
           "category": "Health",
           "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/12213569a.webp"
         }
-      ]
+      ],
+      "status": true
     },
     {
       "id": "3a32",
@@ -261,68 +138,39 @@
       "status": true
     },
     {
-      "id": "ad93",
-      "userName": "Hubaiba",
-      "email": "hubu@gmail.com",
-      "password": "Hubu@123",
+      "id": "f618",
+      "userName": "Suhaiba",
+      "email": "suhu@gmail.com",
+      "password": "Suhu@123",
       "phone": "1234567890",
       "cart": [],
       "order": [
         {
-          "name": "gghh",
-          "address": "bbnm",
+          "name": "suhaiba",
+          "address": "arayancoe",
           "paymentMethod": "Credit Card",
           "items": [
             {
-              "id": "2",
-              "name": "T-Shirts",
-              "price": 320,
-              "quantity": 3,
-              "description": "Babyhug Disney Cotton Knit Oversized Half Sleeves T-Shirt with Minnie Mouse Applique Detailing - White",
+              "id": "33",
+              "name": " Half Sleeves Frocks",
+              "price": 1120,
+              "quantity": 1,
+              "description": "Mark & Mia Half Sleeves Co Ord Set Solid Colour - Blue",
               "category": "Girl Fashion",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/16195218a.webp",
-              "size": null
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/15809103a.webp"
             },
             {
-              "id": "3",
-              "name": "Sleeveless Frock",
-              "price": 624,
+              "id": "34",
+              "name": "Mug with Lid",
+              "price": 179,
               "quantity": 1,
-              "description": "Tior Sleeveless Hearts Printed Bow Applique Ruffle Dress - Brown",
-              "category": "Girl Fashion",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/583x720/17894465a.webp"
-            },
-            {
-              "id": "4",
-              "name": "Shoes",
-              "price": 640,
-              "quantity": 2,
-              "description": "Feetwell Shoes Colour Blocked LED Shoes - White & Yellow",
-              "category": "Footwear",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/16012422a.webp"
+              "description": "Mug with Lid Giraffe Print Light Yellow - 240 ml",
+              "category": "Feeding",
+              "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/3499723a.webp"
             }
           ],
-          "total": 2864,
-          "date": "2024-11-23T09:06:59.844Z"
-        },
-        {
-          "name": "fgh",
-          "address": "fgghj",
-          "paymentMethod": "Credit Card",
-          "items": [
-            {
-              "id": "2",
-              "name": "T-Shirts",
-              "price": 320,
-              "quantity": 1,
-              "description": "Babyhug Disney Cotton Knit Oversized Half Sleeves T-Shirt with Minnie Mouse Applique Detailing - White",
-              "category": "Girl Fashion",
-              "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/16195218a.webp",
-              "size": "3-6 months"
-            }
-          ],
-          "total": 320,
-          "date": "2024-11-23T09:20:11.996Z"
+          "total": 1299,
+          "date": "2024-12-26T05:07:27.264Z"
         }
       ],
       "wishlist": []
@@ -333,7 +181,7 @@
       "id": "1",
       "name": "Clogs with Strap Closure11",
       "price": 580,
-      "quantity": 154,
+      "quantity": 150,
       "description": "Babyoye Clogs with Strap Closure & Applique - Beige",
       "category": "Footwear",
       "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/15957689a.webp"
@@ -610,12 +458,12 @@
     },
     {
       "id": "32",
-      "name": "Bucket Cap",
-      "price": 299,
-      "quantity": 65,
-      "description": "Pine Kids Bucket Cap with Tropical Print - Multicolour",
-      "category": "Girl Fashion",
-      "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/16051089a.webp"
+      "name": "ee3",
+      "price": 3,
+      "quantity": 3,
+      "description": " ,rr",
+      "category": "Bath",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/16235035a.webp"
     },
     {
       "id": "33",
@@ -682,12 +530,12 @@
     },
     {
       "id": "40",
-      "name": "Pillow",
-      "price": 419,
-      "quantity": 100,
-      "description": "Babyhug Muslin Cotton Head Shaping Mustard Seeds Rai Pillow Car Print - Navy Blue",
-      "category": "Nursery",
-      "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/9333728a.webp"
+      "name": "Diapers",
+      "price": 513,
+      "quantity": 86,
+      "description": "MamyPoko Pant Style Diapers XXX Large - 7 Pieces - (Pack of 2)",
+      "category": "Bath",
+      "url": "https://cdn.fcglcdn.com/brainbees/images/products/438x531/cc9148a.webp"
     },
     {
       "id": "41",
@@ -899,7 +747,7 @@
     {
       "id": "64",
       "name": "Tedibar Moisturising Bathing Bar",
-      "price": 520,
+      "price": "525",
       "quantity": 55,
       "description": "Tedibar Moisturising Baby Bathing Bar 75gx3 (Pack of 1) with Skin Friendly pH 100 Percent Soap Free Prevents Dryness & Rashes Dermatologically Tested - By Torrent Pharma",
       "category": "Bath",
@@ -940,15 +788,6 @@
       "description": "BABY GO Cotton Half Sleeves Chevron Designed Tee & Shorts Set - Beige",
       "category": "Boy Fashion",
       "url": "https://cdn.fcglcdn.com/brainbees/images/products/300x364/18395424a.webp"
-    },
-    {
-      "id": "f0ac",
-      "name": "abcd",
-      "price": 123,
-      "quantity": 23,
-      "description": "shoes",
-      "category": "Bath",
-      "url": "https://cdn.fcglcdn.com/brainbees/images/products/219x265/16235035a.webp"
     }
   ]
 }
