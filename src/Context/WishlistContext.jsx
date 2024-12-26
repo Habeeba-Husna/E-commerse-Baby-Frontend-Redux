@@ -8,7 +8,7 @@ export const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
-  console.log('Wishlist state:', wishlist); // Check if wishlist is updating correctly
+  // console.log('Wishlist state:', wishlist); // Check if wishlist is updating correctly
 
   const userId = localStorage.getItem("id");   //know to  which wishlist to load and update
   // const apiUrl = "http://localhost:5000/users";
