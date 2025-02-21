@@ -17,7 +17,7 @@ import AdminHome from './Components/Admin/Dashboard';
 import Adminlayout from './Components/Admin/AdminLayout';
 import AdminProduct from './Components/Admin/AdminProductPage';
 import AdminUser from './Components/Admin/AdminUser';
-// import AdminProtected from './Components/Admin/AdminProtected';
+import AdminProtected from './Components/Admin/AdminProtected';
 
 function App() {
 
@@ -25,6 +25,8 @@ function App() {
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
     <Routes>
+      {/* Public Routes */}
+
     <Route element={<LoginLayout />} >
     <Route path='/' element={<Home />} />
     <Route path="/register" element={<RegistrationPage />} />
@@ -33,21 +35,24 @@ function App() {
       <Route path="*" element={<NotFoundPage />} />
 
       </Route>
-      <Route element={<Layout />} >
+      {/* User Routes */}
       
+      <Route element={<Layout />} >   
       <Route path="/productList" element={<ProductList />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/wishlist" element={<WishlistPage />} />
       <Route path="/order" element={<Order />} />
       {/* <Route path="/orderList" element={<OrderList/>} />  */}
-      
       </Route>
-      {/* <Route  element={<AdminProtected><AdminNavbar/></AdminProtected>} ></Route> */}
+
+       {/* Admin Routes (Protected) */}
+      <Route element={<AdminProtected />}>
     <Route element={<Adminlayout />}>
     <Route path='/admin' element={<AdminHome/>} />
       <Route path='/adminproduct' element={<AdminProduct />} />
       <Route path='/adminuser' element={<AdminUser />} />
+      </Route>
       </Route>
     </Routes>
     

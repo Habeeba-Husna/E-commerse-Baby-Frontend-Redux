@@ -58,9 +58,9 @@ const ProductList = () => {
     dispatch(fetchUserDetails());
   }, [dispatch, page, categoryFilter]);
 
-  const handleAddToCart = (id) => {
+  const handleAddToCart = (product) => {
     if (user) {
-      dispatch(addToCart(id));
+      dispatch(addToCart(product));
       toast.success("Added to cart successfully");
     } else {
       toast.error("Please login");
