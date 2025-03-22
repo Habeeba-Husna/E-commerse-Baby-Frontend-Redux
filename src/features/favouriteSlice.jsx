@@ -3,6 +3,7 @@ import axiosInstance from "../api/axiosInstance";
 import endPoints from "../api/endPoints";
 
 //get favourite
+
 export const getFavorite = createAsyncThunk(
   "favorite/getFavorite",
   async (_, { rejectWithValue }) => {
@@ -19,6 +20,7 @@ export const getFavorite = createAsyncThunk(
 );
 
 //Add and Remove from favorite
+
 export const changeFavorite = createAsyncThunk(
   "favorite/changeFavorite",
   async (productId, { rejectWithValue }) => {
@@ -27,8 +29,6 @@ export const changeFavorite = createAsyncThunk(
       const response = await axiosInstance.post(
         endPoints.FAVORITE.ADD_FAVORITE(productId)
       );
-      // console.log(productId);
-      // console.log(response.data);
       return response.data.favourites.wishlist;
     } catch (error) {
       return rejectWithValue(

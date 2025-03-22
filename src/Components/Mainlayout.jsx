@@ -1,20 +1,3 @@
-// import { Outlet } from "react-router-dom";
-// import Navbar from "./Navbar"; // Import Navbar here
-
-// const Layout = () => {
-//   return (
-//     <div>
-//       <Navbar /> {/* Navbar should only be here */}
-//       <Outlet /> {/* This will render the child components like Home, Shop, etc. */}
-//     </div>
-//   );
-// };
-
-// export default Layout;
-
-
-
-
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from './Navbar'

@@ -1,16 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// import Navbar from '../Components/Navbar';
-// import Footer from '../Components/Footer';
+
 
 const FirstPage = () => {
   const navigate = useNavigate();
 
   return (
     <div className="flex flex-col min-h-screen ">
-      {/* Navbar */}
-      {/* <Navbar /> */}
-
+      
       {/* Main Content Section */}
       <div
         className="relative flex-grow w-full bg-cover bg-center"
@@ -71,42 +68,3 @@ const FirstPage = () => {
 
 export default FirstPage;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import { useNavigate } from 'react-router-dom';
-
-// const HeroSection = () => {
-//     const navigate=useNavigate()
-//   return (
-//     <div
-//       className="relative h-screen bg-cover bg-center flex items-center"
-//       style={{ backgroundImage: "url('https://mom-n-me-demo.myshopify.com/cdn/shop/files/slider1_2000x.jpg?v=161370010')" }}
-//     >
-//       <div className="ml-8">
-//         <button
-//           className="bg-blue-500 text-white px-6 py-3 rounded-md shadow-lg hover:bg-blue-600 transition"
-//           onClick={()=>navigate("/productList")}
-//         >
-//           Shop Now
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default HeroSection;

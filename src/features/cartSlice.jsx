@@ -3,19 +3,6 @@ import axiosInstance from "../api/axiosInstance";
 import endPoints from "../api/endPoints";
 
 // addToCart
-// export const addToCart = createAsyncThunk("cart/addToCart",async (productId, { rejectWithValue }) => {
-//     try {
-//       const response = await axiosInstance.post(endPoints.CART.ADD_TO_CART(productId)
-//     );
-//     console.log("API Response from addToCart:",response.data)
-//       return response.data.cart;
-//     } catch (error) {
-//       return rejectWithValue(
-//         error.response?.data?.message || "error fetching cart"
-//       );
-//     }
-//   }
-// );
 
 export const addToCart = createAsyncThunk(
   "cart/addToCart",
@@ -35,6 +22,7 @@ export const addToCart = createAsyncThunk(
 );
 
 //get cart
+
 export const getCart=createAsyncThunk('cart/getCart',async(_,{rejectWithValue})=>{
     try{
         const response=await axiosInstance.get(endPoints.CART.GET_CART)
@@ -47,6 +35,7 @@ export const getCart=createAsyncThunk('cart/getCart',async(_,{rejectWithValue})=
 })
 
 //remove cart
+
 export const removeCart=createAsyncThunk('cart/removeCart',async(productId,{rejectWithValue})=>{
     try{
         await axiosInstance.delete(endPoints.CART.REMOVE_CART(productId))
@@ -59,6 +48,7 @@ export const removeCart=createAsyncThunk('cart/removeCart',async(productId,{reje
 })
 
 //update quantity
+
 export const updateCartQuantity=createAsyncThunk('cart/updateCartQuantity',async({productId,quantity},{dispatch,rejectWithValue})=>{
     try{
         const response=await axiosInstance.patch(endPoints.CART.UPDATE_QUANTITY,{productId,quantity})

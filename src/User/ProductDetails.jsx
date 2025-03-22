@@ -11,8 +11,8 @@ const ProductDetails = ({ product, onClose, onAddToCart }) => {
     <Modal onClose={onClose} isOpen>
       <div className="p-4 flex flex-col items-center relative">
 
-        {/* Product Image with Out of Stock Overlay */}
-        <div className="relative w-90 h-64"> {/* Increased width from 64 to 80 */}
+        {/* Product Image with Out of Stock  */}
+        <div className="relative w-90 h-64"> 
           <img
             src={product.url}
             alt={product.name}

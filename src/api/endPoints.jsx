@@ -25,7 +25,8 @@ const endPoints = {
   ORDER:{
     CREATE_ORDER:"/users/addOrder",
     VERIFY_PAYMENT:"/users/verifypayment",
-    SHOW_ORDER:"/users/showOrder"
+    SHOW_ORDER:"/users/showOrder",
+    // REMOVE_ORDER: "/users/orders"
   },
   USER:{
     GET_ALL_USER:"/admin/getusers",
